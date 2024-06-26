@@ -43,15 +43,41 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
   final TextStyle semibold22;
 
   @override
-  ThemeExtension<AppTextTheme> copyWith() {
-    // TODO: implement copyWith
-    throw UnimplementedError();
-  }
+  ThemeExtension<AppTextTheme> copyWith({
+    TextStyle? regular10,
+    TextStyle? regular14,
+    TextStyle? regular16,
+    TextStyle? medium14,
+    TextStyle? semibold16,
+    TextStyle? semibold20,
+    TextStyle? semibold22,
+  }) =>
+      AppTextTheme._(
+        regular10: regular10 ?? this.regular10,
+        regular14: regular14 ?? this.regular14,
+        regular16: regular16 ?? this.regular16,
+        medium14: medium14 ?? this.medium14,
+        semibold16: semibold16 ?? this.semibold16,
+        semibold20: semibold20 ?? this.semibold20,
+        semibold22: semibold22 ?? this.semibold22,
+      );
 
   @override
   ThemeExtension<AppTextTheme> lerp(
-      covariant ThemeExtension<AppTextTheme>? other, double t) {
-    // TODO: implement lerp
-    throw UnimplementedError();
+    covariant ThemeExtension<AppTextTheme>? other,
+    double t,
+  ) {
+    if (other is! AppTextTheme) {
+      return this;
+    }
+    return AppTextTheme._(
+      regular10: TextStyle.lerp(regular10, other.regular10, t)!,
+      regular14: TextStyle.lerp(regular14, other.regular14, t)!,
+      regular16: TextStyle.lerp(regular16, other.regular16, t)!,
+      medium14: TextStyle.lerp(medium14, other.medium14, t)!,
+      semibold16: TextStyle.lerp(semibold16, other.semibold16, t)!,
+      semibold20: TextStyle.lerp(semibold20, other.semibold20, t)!,
+      semibold22: TextStyle.lerp(semibold22, other.semibold22, t)!,
+    );
   }
 }

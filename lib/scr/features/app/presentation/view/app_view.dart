@@ -16,32 +16,65 @@ class MyApp extends StatelessWidget {
       );
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late int _indexView;
+
+  @override
+  void initState() {
+    _indexView = 0;
+    super.initState();
+  }
+
+  void _onItemPress(int index) {
+    if (_indexView == index) {
+      return;
+    }
+    setState(() {
+      _indexView = index;
+    });
+  }
+
+  List<Widget> views = [
+    const Center(
+      child: Text('Экран 1'),
+    ),
+    const Center(
+      child: Text('Экран 2'),
+    ),
+    const Center(
+      child: Text('Экран 3'),
+    ),
+  ];
+
+  @override
   Widget build(BuildContext context) => Scaffold(
+        body: views[_indexView],
         bottomNavigationBar: SizedBox(
           height: 60,
           child: BottomNavigationBar(
+            onTap: _onItemPress,
+            currentIndex: _indexView,
             items: [
               const BottomNavigationBarItem(
-                icon: Icon(Icons.search),
+                icon: Icon(Icons.search,),
                 label: 'Поиск',
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
-                  SvgIcons.savedBook,
-                  colorFilter: const ColorFilter.mode(
-                    Colors.black,
-                    BlendMode.srcIn,
-                  ),
+                  SvgIcons.bookmark,
                 ),
-                label: 'Список',
+                label: 'Полки',
               ),
               const BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
-                label: 'настройки',
+                label: 'Настройки',
               ),
             ],
           ),
