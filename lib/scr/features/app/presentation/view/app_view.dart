@@ -1,9 +1,12 @@
+import 'package:book/scr/app_dependencies.dart';
 import 'package:book/scr/core/assets/icons/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, required this.dependencies});
+
+  final Dependencies dependencies;
 
   @override
   Widget build(BuildContext context) => MaterialApp(
