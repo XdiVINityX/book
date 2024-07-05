@@ -66,7 +66,9 @@ class _HomePageState extends State<HomePage> {
             currentIndex: _indexView,
             items: [
               const BottomNavigationBarItem(
-                icon: Icon(Icons.search,),
+                icon: Icon(
+                  Icons.search,
+                ),
                 label: 'Поиск',
               ),
               BottomNavigationBarItem(

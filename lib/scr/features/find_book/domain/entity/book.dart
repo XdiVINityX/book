@@ -1,4 +1,5 @@
-import 'package:book/scr/features/find/data/dto/book_dto.dart';
+
+import 'package:book/scr/features/find_book/data/dto/book_dto.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'book.freezed.dart';
