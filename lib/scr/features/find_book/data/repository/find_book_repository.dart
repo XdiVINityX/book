@@ -1,4 +1,4 @@
-import 'package:book/scr/core/data/source/network/book_api_provider.dart';
+import 'package:book/scr/features/app/utils/language.dart';
 import 'package:book/scr/features/find_book/data/source/network/find_book_api_provider.dart';
 import 'package:book/scr/features/find_book/domain/entity/book.dart';
 import 'package:book/scr/features/find_book/domain/repository/find_book_repository.dart';
@@ -10,10 +10,16 @@ class FindBookRepository implements IFindBookRepository {
   final IFindBookApiProvider _findBookApiProvider;
 
   @override
-  Future<List<Book>> getBooks(String queryBook, Language languageSearch) async {
-    final booksDto =
-        await _findBookApiProvider.getBooks(queryBook, languageSearch);
-    final books = booksDto.map(Book.fromDto).toList();
-    return books;
+  Future<BookGeneral> getBooks({
+    required String queryBook,
+    Language languageSearch = Language.ru,
+  }) async {
+    final booksGeneralDto = await _findBookApiProvider.getBooksByQuery(
+      queryBook,
+      languageSearch.value,
+    );
+    final booksGeneral = BookGeneral.fromDto(booksGeneralDto);
+    print('books = ${booksGeneral.books}');
+    return booksGeneral;
   }
 }

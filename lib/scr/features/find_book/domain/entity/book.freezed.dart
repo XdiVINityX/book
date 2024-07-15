@@ -15,10 +15,180 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
+mixin _$BookGeneral {
+  String get kind => throw _privateConstructorUsedError;
+  String get totalItems => throw _privateConstructorUsedError;
+  List<Book>? get books => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $BookGeneralCopyWith<BookGeneral> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $BookGeneralCopyWith<$Res> {
+  factory $BookGeneralCopyWith(
+          BookGeneral value, $Res Function(BookGeneral) then) =
+      _$BookGeneralCopyWithImpl<$Res, BookGeneral>;
+  @useResult
+  $Res call({String kind, String totalItems, List<Book>? books});
+}
+
+/// @nodoc
+class _$BookGeneralCopyWithImpl<$Res, $Val extends BookGeneral>
+    implements $BookGeneralCopyWith<$Res> {
+  _$BookGeneralCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? kind = null,
+    Object? totalItems = null,
+    Object? books = freezed,
+  }) {
+    return _then(_value.copyWith(
+      kind: null == kind
+          ? _value.kind
+          : kind // ignore: cast_nullable_to_non_nullable
+              as String,
+      totalItems: null == totalItems
+          ? _value.totalItems
+          : totalItems // ignore: cast_nullable_to_non_nullable
+              as String,
+      books: freezed == books
+          ? _value.books
+          : books // ignore: cast_nullable_to_non_nullable
+              as List<Book>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$BookGeneralImplCopyWith<$Res>
+    implements $BookGeneralCopyWith<$Res> {
+  factory _$$BookGeneralImplCopyWith(
+          _$BookGeneralImpl value, $Res Function(_$BookGeneralImpl) then) =
+      __$$BookGeneralImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String kind, String totalItems, List<Book>? books});
+}
+
+/// @nodoc
+class __$$BookGeneralImplCopyWithImpl<$Res>
+    extends _$BookGeneralCopyWithImpl<$Res, _$BookGeneralImpl>
+    implements _$$BookGeneralImplCopyWith<$Res> {
+  __$$BookGeneralImplCopyWithImpl(
+      _$BookGeneralImpl _value, $Res Function(_$BookGeneralImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? kind = null,
+    Object? totalItems = null,
+    Object? books = freezed,
+  }) {
+    return _then(_$BookGeneralImpl(
+      kind: null == kind
+          ? _value.kind
+          : kind // ignore: cast_nullable_to_non_nullable
+              as String,
+      totalItems: null == totalItems
+          ? _value.totalItems
+          : totalItems // ignore: cast_nullable_to_non_nullable
+              as String,
+      books: freezed == books
+          ? _value._books
+          : books // ignore: cast_nullable_to_non_nullable
+              as List<Book>?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BookGeneralImpl implements _BookGeneral {
+  const _$BookGeneralImpl(
+      {required this.kind,
+      required this.totalItems,
+      required final List<Book>? books})
+      : _books = books;
+
+  @override
+  final String kind;
+  @override
+  final String totalItems;
+  final List<Book>? _books;
+  @override
+  List<Book>? get books {
+    final value = _books;
+    if (value == null) return null;
+    if (_books is EqualUnmodifiableListView) return _books;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'BookGeneral(kind: $kind, totalItems: $totalItems, books: $books)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BookGeneralImpl &&
+            (identical(other.kind, kind) || other.kind == kind) &&
+            (identical(other.totalItems, totalItems) ||
+                other.totalItems == totalItems) &&
+            const DeepCollectionEquality().equals(other._books, _books));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, kind, totalItems,
+      const DeepCollectionEquality().hash(_books));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BookGeneralImplCopyWith<_$BookGeneralImpl> get copyWith =>
+      __$$BookGeneralImplCopyWithImpl<_$BookGeneralImpl>(this, _$identity);
+}
+
+abstract class _BookGeneral implements BookGeneral {
+  const factory _BookGeneral(
+      {required final String kind,
+      required final String totalItems,
+      required final List<Book>? books}) = _$BookGeneralImpl;
+
+  @override
+  String get kind;
+  @override
+  String get totalItems;
+  @override
+  List<Book>? get books;
+  @override
+  @JsonKey(ignore: true)
+  _$$BookGeneralImplCopyWith<_$BookGeneralImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$Book {
   String get kind => throw _privateConstructorUsedError;
-  int get totalItems => throw _privateConstructorUsedError;
-  List<Item> get items => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  String get etag => throw _privateConstructorUsedError;
+  String get selfLink => throw _privateConstructorUsedError;
+  VolumeInfo get volumeInfo => throw _privateConstructorUsedError;
+  SaleInfo get saleInfo => throw _privateConstructorUsedError;
+  AccessInfo get accessInfo => throw _privateConstructorUsedError;
+  SearchInfo? get searchInfo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BookCopyWith<Book> get copyWith => throw _privateConstructorUsedError;
@@ -29,7 +199,20 @@ abstract class $BookCopyWith<$Res> {
   factory $BookCopyWith(Book value, $Res Function(Book) then) =
       _$BookCopyWithImpl<$Res, Book>;
   @useResult
-  $Res call({String kind, int totalItems, List<Item> items});
+  $Res call(
+      {String kind,
+      String id,
+      String etag,
+      String selfLink,
+      VolumeInfo volumeInfo,
+      SaleInfo saleInfo,
+      AccessInfo accessInfo,
+      SearchInfo? searchInfo});
+
+  $VolumeInfoCopyWith<$Res> get volumeInfo;
+  $SaleInfoCopyWith<$Res> get saleInfo;
+  $AccessInfoCopyWith<$Res> get accessInfo;
+  $SearchInfoCopyWith<$Res>? get searchInfo;
 }
 
 /// @nodoc
@@ -46,190 +229,13 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
   @override
   $Res call({
     Object? kind = null,
-    Object? totalItems = null,
-    Object? items = null,
-  }) {
-    return _then(_value.copyWith(
-      kind: null == kind
-          ? _value.kind
-          : kind // ignore: cast_nullable_to_non_nullable
-              as String,
-      totalItems: null == totalItems
-          ? _value.totalItems
-          : totalItems // ignore: cast_nullable_to_non_nullable
-              as int,
-      items: null == items
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<Item>,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$BookImplCopyWith<$Res> implements $BookCopyWith<$Res> {
-  factory _$$BookImplCopyWith(
-          _$BookImpl value, $Res Function(_$BookImpl) then) =
-      __$$BookImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String kind, int totalItems, List<Item> items});
-}
-
-/// @nodoc
-class __$$BookImplCopyWithImpl<$Res>
-    extends _$BookCopyWithImpl<$Res, _$BookImpl>
-    implements _$$BookImplCopyWith<$Res> {
-  __$$BookImplCopyWithImpl(_$BookImpl _value, $Res Function(_$BookImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? kind = null,
-    Object? totalItems = null,
-    Object? items = null,
-  }) {
-    return _then(_$BookImpl(
-      kind: null == kind
-          ? _value.kind
-          : kind // ignore: cast_nullable_to_non_nullable
-              as String,
-      totalItems: null == totalItems
-          ? _value.totalItems
-          : totalItems // ignore: cast_nullable_to_non_nullable
-              as int,
-      items: null == items
-          ? _value._items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<Item>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$BookImpl implements _Book {
-  const _$BookImpl(
-      {required this.kind,
-      required this.totalItems,
-      required final List<Item> items})
-      : _items = items;
-
-  @override
-  final String kind;
-  @override
-  final int totalItems;
-  final List<Item> _items;
-  @override
-  List<Item> get items {
-    if (_items is EqualUnmodifiableListView) return _items;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
-  }
-
-  @override
-  String toString() {
-    return 'Book(kind: $kind, totalItems: $totalItems, items: $items)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$BookImpl &&
-            (identical(other.kind, kind) || other.kind == kind) &&
-            (identical(other.totalItems, totalItems) ||
-                other.totalItems == totalItems) &&
-            const DeepCollectionEquality().equals(other._items, _items));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, kind, totalItems,
-      const DeepCollectionEquality().hash(_items));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$BookImplCopyWith<_$BookImpl> get copyWith =>
-      __$$BookImplCopyWithImpl<_$BookImpl>(this, _$identity);
-}
-
-abstract class _Book implements Book {
-  const factory _Book(
-      {required final String kind,
-      required final int totalItems,
-      required final List<Item> items}) = _$BookImpl;
-
-  @override
-  String get kind;
-  @override
-  int get totalItems;
-  @override
-  List<Item> get items;
-  @override
-  @JsonKey(ignore: true)
-  _$$BookImplCopyWith<_$BookImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$Item {
-  String get kind => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
-  String get etag => throw _privateConstructorUsedError;
-  String get selfLink => throw _privateConstructorUsedError;
-  VolumeInfo get volumeInfo => throw _privateConstructorUsedError;
-  SaleInfo get saleInfo => throw _privateConstructorUsedError;
-  AccessInfo get accessInfo => throw _privateConstructorUsedError;
-  SearchInfo get searchInfo => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ItemCopyWith<Item> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ItemCopyWith<$Res> {
-  factory $ItemCopyWith(Item value, $Res Function(Item) then) =
-      _$ItemCopyWithImpl<$Res, Item>;
-  @useResult
-  $Res call(
-      {String kind,
-      String id,
-      String etag,
-      String selfLink,
-      VolumeInfo volumeInfo,
-      SaleInfo saleInfo,
-      AccessInfo accessInfo,
-      SearchInfo searchInfo});
-
-  $VolumeInfoCopyWith<$Res> get volumeInfo;
-  $SaleInfoCopyWith<$Res> get saleInfo;
-  $AccessInfoCopyWith<$Res> get accessInfo;
-  $SearchInfoCopyWith<$Res> get searchInfo;
-}
-
-/// @nodoc
-class _$ItemCopyWithImpl<$Res, $Val extends Item>
-    implements $ItemCopyWith<$Res> {
-  _$ItemCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? kind = null,
     Object? id = null,
     Object? etag = null,
     Object? selfLink = null,
     Object? volumeInfo = null,
     Object? saleInfo = null,
     Object? accessInfo = null,
-    Object? searchInfo = null,
+    Object? searchInfo = freezed,
   }) {
     return _then(_value.copyWith(
       kind: null == kind
@@ -260,10 +266,10 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
           ? _value.accessInfo
           : accessInfo // ignore: cast_nullable_to_non_nullable
               as AccessInfo,
-      searchInfo: null == searchInfo
+      searchInfo: freezed == searchInfo
           ? _value.searchInfo
           : searchInfo // ignore: cast_nullable_to_non_nullable
-              as SearchInfo,
+              as SearchInfo?,
     ) as $Val);
   }
 
@@ -293,18 +299,22 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
 
   @override
   @pragma('vm:prefer-inline')
-  $SearchInfoCopyWith<$Res> get searchInfo {
-    return $SearchInfoCopyWith<$Res>(_value.searchInfo, (value) {
+  $SearchInfoCopyWith<$Res>? get searchInfo {
+    if (_value.searchInfo == null) {
+      return null;
+    }
+
+    return $SearchInfoCopyWith<$Res>(_value.searchInfo!, (value) {
       return _then(_value.copyWith(searchInfo: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
-  factory _$$ItemImplCopyWith(
-          _$ItemImpl value, $Res Function(_$ItemImpl) then) =
-      __$$ItemImplCopyWithImpl<$Res>;
+abstract class _$$BookImplCopyWith<$Res> implements $BookCopyWith<$Res> {
+  factory _$$BookImplCopyWith(
+          _$BookImpl value, $Res Function(_$BookImpl) then) =
+      __$$BookImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -315,7 +325,7 @@ abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
       VolumeInfo volumeInfo,
       SaleInfo saleInfo,
       AccessInfo accessInfo,
-      SearchInfo searchInfo});
+      SearchInfo? searchInfo});
 
   @override
   $VolumeInfoCopyWith<$Res> get volumeInfo;
@@ -324,14 +334,14 @@ abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
   @override
   $AccessInfoCopyWith<$Res> get accessInfo;
   @override
-  $SearchInfoCopyWith<$Res> get searchInfo;
+  $SearchInfoCopyWith<$Res>? get searchInfo;
 }
 
 /// @nodoc
-class __$$ItemImplCopyWithImpl<$Res>
-    extends _$ItemCopyWithImpl<$Res, _$ItemImpl>
-    implements _$$ItemImplCopyWith<$Res> {
-  __$$ItemImplCopyWithImpl(_$ItemImpl _value, $Res Function(_$ItemImpl) _then)
+class __$$BookImplCopyWithImpl<$Res>
+    extends _$BookCopyWithImpl<$Res, _$BookImpl>
+    implements _$$BookImplCopyWith<$Res> {
+  __$$BookImplCopyWithImpl(_$BookImpl _value, $Res Function(_$BookImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -344,9 +354,9 @@ class __$$ItemImplCopyWithImpl<$Res>
     Object? volumeInfo = null,
     Object? saleInfo = null,
     Object? accessInfo = null,
-    Object? searchInfo = null,
+    Object? searchInfo = freezed,
   }) {
-    return _then(_$ItemImpl(
+    return _then(_$BookImpl(
       kind: null == kind
           ? _value.kind
           : kind // ignore: cast_nullable_to_non_nullable
@@ -375,18 +385,18 @@ class __$$ItemImplCopyWithImpl<$Res>
           ? _value.accessInfo
           : accessInfo // ignore: cast_nullable_to_non_nullable
               as AccessInfo,
-      searchInfo: null == searchInfo
+      searchInfo: freezed == searchInfo
           ? _value.searchInfo
           : searchInfo // ignore: cast_nullable_to_non_nullable
-              as SearchInfo,
+              as SearchInfo?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ItemImpl implements _Item {
-  const _$ItemImpl(
+class _$BookImpl implements _Book {
+  const _$BookImpl(
       {required this.kind,
       required this.id,
       required this.etag,
@@ -411,18 +421,18 @@ class _$ItemImpl implements _Item {
   @override
   final AccessInfo accessInfo;
   @override
-  final SearchInfo searchInfo;
+  final SearchInfo? searchInfo;
 
   @override
   String toString() {
-    return 'Item(kind: $kind, id: $id, etag: $etag, selfLink: $selfLink, volumeInfo: $volumeInfo, saleInfo: $saleInfo, accessInfo: $accessInfo, searchInfo: $searchInfo)';
+    return 'Book(kind: $kind, id: $id, etag: $etag, selfLink: $selfLink, volumeInfo: $volumeInfo, saleInfo: $saleInfo, accessInfo: $accessInfo, searchInfo: $searchInfo)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ItemImpl &&
+            other is _$BookImpl &&
             (identical(other.kind, kind) || other.kind == kind) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.etag, etag) || other.etag == etag) &&
@@ -445,12 +455,12 @@ class _$ItemImpl implements _Item {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ItemImplCopyWith<_$ItemImpl> get copyWith =>
-      __$$ItemImplCopyWithImpl<_$ItemImpl>(this, _$identity);
+  _$$BookImplCopyWith<_$BookImpl> get copyWith =>
+      __$$BookImplCopyWithImpl<_$BookImpl>(this, _$identity);
 }
 
-abstract class _Item implements Item {
-  const factory _Item(
+abstract class _Book implements Book {
+  const factory _Book(
       {required final String kind,
       required final String id,
       required final String etag,
@@ -458,7 +468,7 @@ abstract class _Item implements Item {
       required final VolumeInfo volumeInfo,
       required final SaleInfo saleInfo,
       required final AccessInfo accessInfo,
-      required final SearchInfo searchInfo}) = _$ItemImpl;
+      required final SearchInfo? searchInfo}) = _$BookImpl;
 
   @override
   String get kind;
@@ -475,10 +485,10 @@ abstract class _Item implements Item {
   @override
   AccessInfo get accessInfo;
   @override
-  SearchInfo get searchInfo;
+  SearchInfo? get searchInfo;
   @override
   @JsonKey(ignore: true)
-  _$$ItemImplCopyWith<_$ItemImpl> get copyWith =>
+  _$$BookImplCopyWith<_$BookImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -491,7 +501,7 @@ mixin _$AccessInfo {
   String get textToSpeechPermission => throw _privateConstructorUsedError;
   Epub get epub => throw _privateConstructorUsedError;
   Pdf get pdf => throw _privateConstructorUsedError;
-  String get webReaderLink => throw _privateConstructorUsedError;
+  String? get webReaderLink => throw _privateConstructorUsedError;
   String get accessViewStatus => throw _privateConstructorUsedError;
   bool get quoteSharingAllowed => throw _privateConstructorUsedError;
 
@@ -514,7 +524,7 @@ abstract class $AccessInfoCopyWith<$Res> {
       String textToSpeechPermission,
       Epub epub,
       Pdf pdf,
-      String webReaderLink,
+      String? webReaderLink,
       String accessViewStatus,
       bool quoteSharingAllowed});
 
@@ -542,7 +552,7 @@ class _$AccessInfoCopyWithImpl<$Res, $Val extends AccessInfo>
     Object? textToSpeechPermission = null,
     Object? epub = null,
     Object? pdf = null,
-    Object? webReaderLink = null,
+    Object? webReaderLink = freezed,
     Object? accessViewStatus = null,
     Object? quoteSharingAllowed = null,
   }) {
@@ -575,10 +585,10 @@ class _$AccessInfoCopyWithImpl<$Res, $Val extends AccessInfo>
           ? _value.pdf
           : pdf // ignore: cast_nullable_to_non_nullable
               as Pdf,
-      webReaderLink: null == webReaderLink
+      webReaderLink: freezed == webReaderLink
           ? _value.webReaderLink
           : webReaderLink // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       accessViewStatus: null == accessViewStatus
           ? _value.accessViewStatus
           : accessViewStatus // ignore: cast_nullable_to_non_nullable
@@ -623,7 +633,7 @@ abstract class _$$AccessInfoImplCopyWith<$Res>
       String textToSpeechPermission,
       Epub epub,
       Pdf pdf,
-      String webReaderLink,
+      String? webReaderLink,
       String accessViewStatus,
       bool quoteSharingAllowed});
 
@@ -651,7 +661,7 @@ class __$$AccessInfoImplCopyWithImpl<$Res>
     Object? textToSpeechPermission = null,
     Object? epub = null,
     Object? pdf = null,
-    Object? webReaderLink = null,
+    Object? webReaderLink = freezed,
     Object? accessViewStatus = null,
     Object? quoteSharingAllowed = null,
   }) {
@@ -684,10 +694,10 @@ class __$$AccessInfoImplCopyWithImpl<$Res>
           ? _value.pdf
           : pdf // ignore: cast_nullable_to_non_nullable
               as Pdf,
-      webReaderLink: null == webReaderLink
+      webReaderLink: freezed == webReaderLink
           ? _value.webReaderLink
           : webReaderLink // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       accessViewStatus: null == accessViewStatus
           ? _value.accessViewStatus
           : accessViewStatus // ignore: cast_nullable_to_non_nullable
@@ -730,7 +740,7 @@ class _$AccessInfoImpl implements _AccessInfo {
   @override
   final Pdf pdf;
   @override
-  final String webReaderLink;
+  final String? webReaderLink;
   @override
   final String accessViewStatus;
   @override
@@ -795,7 +805,7 @@ abstract class _AccessInfo implements AccessInfo {
       required final String textToSpeechPermission,
       required final Epub epub,
       required final Pdf pdf,
-      required final String webReaderLink,
+      required final String? webReaderLink,
       required final String accessViewStatus,
       required final bool quoteSharingAllowed}) = _$AccessInfoImpl;
 
@@ -814,7 +824,7 @@ abstract class _AccessInfo implements AccessInfo {
   @override
   Pdf get pdf;
   @override
-  String get webReaderLink;
+  String? get webReaderLink;
   @override
   String get accessViewStatus;
   @override
@@ -961,7 +971,7 @@ abstract class _Epub implements Epub {
 /// @nodoc
 mixin _$Pdf {
   bool get isAvailable => throw _privateConstructorUsedError;
-  String get acsTokenLink => throw _privateConstructorUsedError;
+  String? get acsTokenLink => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PdfCopyWith<Pdf> get copyWith => throw _privateConstructorUsedError;
@@ -972,7 +982,7 @@ abstract class $PdfCopyWith<$Res> {
   factory $PdfCopyWith(Pdf value, $Res Function(Pdf) then) =
       _$PdfCopyWithImpl<$Res, Pdf>;
   @useResult
-  $Res call({bool isAvailable, String acsTokenLink});
+  $Res call({bool isAvailable, String? acsTokenLink});
 }
 
 /// @nodoc
@@ -988,17 +998,17 @@ class _$PdfCopyWithImpl<$Res, $Val extends Pdf> implements $PdfCopyWith<$Res> {
   @override
   $Res call({
     Object? isAvailable = null,
-    Object? acsTokenLink = null,
+    Object? acsTokenLink = freezed,
   }) {
     return _then(_value.copyWith(
       isAvailable: null == isAvailable
           ? _value.isAvailable
           : isAvailable // ignore: cast_nullable_to_non_nullable
               as bool,
-      acsTokenLink: null == acsTokenLink
+      acsTokenLink: freezed == acsTokenLink
           ? _value.acsTokenLink
           : acsTokenLink // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -1009,7 +1019,7 @@ abstract class _$$PdfImplCopyWith<$Res> implements $PdfCopyWith<$Res> {
       __$$PdfImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isAvailable, String acsTokenLink});
+  $Res call({bool isAvailable, String? acsTokenLink});
 }
 
 /// @nodoc
@@ -1022,17 +1032,17 @@ class __$$PdfImplCopyWithImpl<$Res> extends _$PdfCopyWithImpl<$Res, _$PdfImpl>
   @override
   $Res call({
     Object? isAvailable = null,
-    Object? acsTokenLink = null,
+    Object? acsTokenLink = freezed,
   }) {
     return _then(_$PdfImpl(
       isAvailable: null == isAvailable
           ? _value.isAvailable
           : isAvailable // ignore: cast_nullable_to_non_nullable
               as bool,
-      acsTokenLink: null == acsTokenLink
+      acsTokenLink: freezed == acsTokenLink
           ? _value.acsTokenLink
           : acsTokenLink // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -1045,7 +1055,7 @@ class _$PdfImpl implements _Pdf {
   @override
   final bool isAvailable;
   @override
-  final String acsTokenLink;
+  final String? acsTokenLink;
 
   @override
   String toString() {
@@ -1076,12 +1086,12 @@ class _$PdfImpl implements _Pdf {
 abstract class _Pdf implements Pdf {
   const factory _Pdf(
       {required final bool isAvailable,
-      required final String acsTokenLink}) = _$PdfImpl;
+      required final String? acsTokenLink}) = _$PdfImpl;
 
   @override
   bool get isAvailable;
   @override
-  String get acsTokenLink;
+  String? get acsTokenLink;
   @override
   @JsonKey(ignore: true)
   _$$PdfImplCopyWith<_$PdfImpl> get copyWith =>
@@ -1522,7 +1532,7 @@ mixin _$Offer {
   int get finskyOfferType => throw _privateConstructorUsedError;
   OfferListPrice get listPrice => throw _privateConstructorUsedError;
   OfferListPrice get retailPrice => throw _privateConstructorUsedError;
-  bool get giftable => throw _privateConstructorUsedError;
+  bool? get giftable => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OfferCopyWith<Offer> get copyWith => throw _privateConstructorUsedError;
@@ -1537,7 +1547,7 @@ abstract class $OfferCopyWith<$Res> {
       {int finskyOfferType,
       OfferListPrice listPrice,
       OfferListPrice retailPrice,
-      bool giftable});
+      bool? giftable});
 
   $OfferListPriceCopyWith<$Res> get listPrice;
   $OfferListPriceCopyWith<$Res> get retailPrice;
@@ -1559,7 +1569,7 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
     Object? finskyOfferType = null,
     Object? listPrice = null,
     Object? retailPrice = null,
-    Object? giftable = null,
+    Object? giftable = freezed,
   }) {
     return _then(_value.copyWith(
       finskyOfferType: null == finskyOfferType
@@ -1574,10 +1584,10 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
           ? _value.retailPrice
           : retailPrice // ignore: cast_nullable_to_non_nullable
               as OfferListPrice,
-      giftable: null == giftable
+      giftable: freezed == giftable
           ? _value.giftable
           : giftable // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ) as $Val);
   }
 
@@ -1609,7 +1619,7 @@ abstract class _$$OfferImplCopyWith<$Res> implements $OfferCopyWith<$Res> {
       {int finskyOfferType,
       OfferListPrice listPrice,
       OfferListPrice retailPrice,
-      bool giftable});
+      bool? giftable});
 
   @override
   $OfferListPriceCopyWith<$Res> get listPrice;
@@ -1631,7 +1641,7 @@ class __$$OfferImplCopyWithImpl<$Res>
     Object? finskyOfferType = null,
     Object? listPrice = null,
     Object? retailPrice = null,
-    Object? giftable = null,
+    Object? giftable = freezed,
   }) {
     return _then(_$OfferImpl(
       finskyOfferType: null == finskyOfferType
@@ -1646,10 +1656,10 @@ class __$$OfferImplCopyWithImpl<$Res>
           ? _value.retailPrice
           : retailPrice // ignore: cast_nullable_to_non_nullable
               as OfferListPrice,
-      giftable: null == giftable
+      giftable: freezed == giftable
           ? _value.giftable
           : giftable // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
@@ -1670,7 +1680,7 @@ class _$OfferImpl implements _Offer {
   @override
   final OfferListPrice retailPrice;
   @override
-  final bool giftable;
+  final bool? giftable;
 
   @override
   String toString() {
@@ -1708,7 +1718,7 @@ abstract class _Offer implements Offer {
       {required final int finskyOfferType,
       required final OfferListPrice listPrice,
       required final OfferListPrice retailPrice,
-      required final bool giftable}) = _$OfferImpl;
+      required final bool? giftable}) = _$OfferImpl;
 
   @override
   int get finskyOfferType;
@@ -1717,7 +1727,7 @@ abstract class _Offer implements Offer {
   @override
   OfferListPrice get retailPrice;
   @override
-  bool get giftable;
+  bool? get giftable;
   @override
   @JsonKey(ignore: true)
   _$$OfferImplCopyWith<_$OfferImpl> get copyWith =>
@@ -1865,7 +1875,7 @@ abstract class _OfferListPrice implements OfferListPrice {
 
 /// @nodoc
 mixin _$SearchInfo {
-  String get textSnippet => throw _privateConstructorUsedError;
+  String? get textSnippet => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SearchInfoCopyWith<SearchInfo> get copyWith =>
@@ -1878,7 +1888,7 @@ abstract class $SearchInfoCopyWith<$Res> {
           SearchInfo value, $Res Function(SearchInfo) then) =
       _$SearchInfoCopyWithImpl<$Res, SearchInfo>;
   @useResult
-  $Res call({String textSnippet});
+  $Res call({String? textSnippet});
 }
 
 /// @nodoc
@@ -1894,13 +1904,13 @@ class _$SearchInfoCopyWithImpl<$Res, $Val extends SearchInfo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? textSnippet = null,
+    Object? textSnippet = freezed,
   }) {
     return _then(_value.copyWith(
-      textSnippet: null == textSnippet
+      textSnippet: freezed == textSnippet
           ? _value.textSnippet
           : textSnippet // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -1913,7 +1923,7 @@ abstract class _$$SearchInfoImplCopyWith<$Res>
       __$$SearchInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String textSnippet});
+  $Res call({String? textSnippet});
 }
 
 /// @nodoc
@@ -1927,13 +1937,13 @@ class __$$SearchInfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? textSnippet = null,
+    Object? textSnippet = freezed,
   }) {
     return _then(_$SearchInfoImpl(
-      textSnippet: null == textSnippet
+      textSnippet: freezed == textSnippet
           ? _value.textSnippet
           : textSnippet // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -1944,7 +1954,7 @@ class _$SearchInfoImpl implements _SearchInfo {
   const _$SearchInfoImpl({required this.textSnippet});
 
   @override
-  final String textSnippet;
+  final String? textSnippet;
 
   @override
   String toString() {
@@ -1971,11 +1981,11 @@ class _$SearchInfoImpl implements _SearchInfo {
 }
 
 abstract class _SearchInfo implements SearchInfo {
-  const factory _SearchInfo({required final String textSnippet}) =
+  const factory _SearchInfo({required final String? textSnippet}) =
       _$SearchInfoImpl;
 
   @override
-  String get textSnippet;
+  String? get textSnippet;
   @override
   @JsonKey(ignore: true)
   _$$SearchInfoImplCopyWith<_$SearchInfoImpl> get copyWith =>
@@ -1985,22 +1995,22 @@ abstract class _SearchInfo implements SearchInfo {
 /// @nodoc
 mixin _$VolumeInfo {
   String get title => throw _privateConstructorUsedError;
-  List<String> get authors => throw _privateConstructorUsedError;
-  String get publisher => throw _privateConstructorUsedError;
-  DateTime get publishedDate => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
-  List<IndustryIdentifier> get industryIdentifiers =>
+  List<String>? get authors => throw _privateConstructorUsedError;
+  String? get publisher => throw _privateConstructorUsedError;
+  String? get publishedDate => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  List<IndustryIdentifier>? get industryIdentifiers =>
       throw _privateConstructorUsedError;
   ReadingModes get readingModes => throw _privateConstructorUsedError;
   int? get pageCount => throw _privateConstructorUsedError;
   String get printType => throw _privateConstructorUsedError;
-  List<String> get categories => throw _privateConstructorUsedError;
+  List<String>? get categories => throw _privateConstructorUsedError;
   String get maturityRating => throw _privateConstructorUsedError;
   bool get allowAnonLogging => throw _privateConstructorUsedError;
   String get contentVersion => throw _privateConstructorUsedError;
-  PanelizationSummary get panelizationSummary =>
+  PanelizationSummary? get panelizationSummary =>
       throw _privateConstructorUsedError;
-  ImageLinks get imageLinks => throw _privateConstructorUsedError;
+  ImageLinks? get imageLinks => throw _privateConstructorUsedError;
   String get language => throw _privateConstructorUsedError;
   String get previewLink => throw _privateConstructorUsedError;
   String get infoLink => throw _privateConstructorUsedError;
@@ -2019,28 +2029,28 @@ abstract class $VolumeInfoCopyWith<$Res> {
   @useResult
   $Res call(
       {String title,
-      List<String> authors,
-      String publisher,
-      DateTime publishedDate,
-      String description,
-      List<IndustryIdentifier> industryIdentifiers,
+      List<String>? authors,
+      String? publisher,
+      String? publishedDate,
+      String? description,
+      List<IndustryIdentifier>? industryIdentifiers,
       ReadingModes readingModes,
       int? pageCount,
       String printType,
-      List<String> categories,
+      List<String>? categories,
       String maturityRating,
       bool allowAnonLogging,
       String contentVersion,
-      PanelizationSummary panelizationSummary,
-      ImageLinks imageLinks,
+      PanelizationSummary? panelizationSummary,
+      ImageLinks? imageLinks,
       String language,
       String previewLink,
       String infoLink,
       String canonicalVolumeLink});
 
   $ReadingModesCopyWith<$Res> get readingModes;
-  $PanelizationSummaryCopyWith<$Res> get panelizationSummary;
-  $ImageLinksCopyWith<$Res> get imageLinks;
+  $PanelizationSummaryCopyWith<$Res>? get panelizationSummary;
+  $ImageLinksCopyWith<$Res>? get imageLinks;
 }
 
 /// @nodoc
@@ -2057,20 +2067,20 @@ class _$VolumeInfoCopyWithImpl<$Res, $Val extends VolumeInfo>
   @override
   $Res call({
     Object? title = null,
-    Object? authors = null,
-    Object? publisher = null,
-    Object? publishedDate = null,
-    Object? description = null,
-    Object? industryIdentifiers = null,
+    Object? authors = freezed,
+    Object? publisher = freezed,
+    Object? publishedDate = freezed,
+    Object? description = freezed,
+    Object? industryIdentifiers = freezed,
     Object? readingModes = null,
     Object? pageCount = freezed,
     Object? printType = null,
-    Object? categories = null,
+    Object? categories = freezed,
     Object? maturityRating = null,
     Object? allowAnonLogging = null,
     Object? contentVersion = null,
-    Object? panelizationSummary = null,
-    Object? imageLinks = null,
+    Object? panelizationSummary = freezed,
+    Object? imageLinks = freezed,
     Object? language = null,
     Object? previewLink = null,
     Object? infoLink = null,
@@ -2081,26 +2091,26 @@ class _$VolumeInfoCopyWithImpl<$Res, $Val extends VolumeInfo>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      authors: null == authors
+      authors: freezed == authors
           ? _value.authors
           : authors // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      publisher: null == publisher
+              as List<String>?,
+      publisher: freezed == publisher
           ? _value.publisher
           : publisher // ignore: cast_nullable_to_non_nullable
-              as String,
-      publishedDate: null == publishedDate
+              as String?,
+      publishedDate: freezed == publishedDate
           ? _value.publishedDate
           : publishedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      description: null == description
+              as String?,
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      industryIdentifiers: null == industryIdentifiers
+              as String?,
+      industryIdentifiers: freezed == industryIdentifiers
           ? _value.industryIdentifiers
           : industryIdentifiers // ignore: cast_nullable_to_non_nullable
-              as List<IndustryIdentifier>,
+              as List<IndustryIdentifier>?,
       readingModes: null == readingModes
           ? _value.readingModes
           : readingModes // ignore: cast_nullable_to_non_nullable
@@ -2113,10 +2123,10 @@ class _$VolumeInfoCopyWithImpl<$Res, $Val extends VolumeInfo>
           ? _value.printType
           : printType // ignore: cast_nullable_to_non_nullable
               as String,
-      categories: null == categories
+      categories: freezed == categories
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
       maturityRating: null == maturityRating
           ? _value.maturityRating
           : maturityRating // ignore: cast_nullable_to_non_nullable
@@ -2129,14 +2139,14 @@ class _$VolumeInfoCopyWithImpl<$Res, $Val extends VolumeInfo>
           ? _value.contentVersion
           : contentVersion // ignore: cast_nullable_to_non_nullable
               as String,
-      panelizationSummary: null == panelizationSummary
+      panelizationSummary: freezed == panelizationSummary
           ? _value.panelizationSummary
           : panelizationSummary // ignore: cast_nullable_to_non_nullable
-              as PanelizationSummary,
-      imageLinks: null == imageLinks
+              as PanelizationSummary?,
+      imageLinks: freezed == imageLinks
           ? _value.imageLinks
           : imageLinks // ignore: cast_nullable_to_non_nullable
-              as ImageLinks,
+              as ImageLinks?,
       language: null == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
@@ -2166,8 +2176,12 @@ class _$VolumeInfoCopyWithImpl<$Res, $Val extends VolumeInfo>
 
   @override
   @pragma('vm:prefer-inline')
-  $PanelizationSummaryCopyWith<$Res> get panelizationSummary {
-    return $PanelizationSummaryCopyWith<$Res>(_value.panelizationSummary,
+  $PanelizationSummaryCopyWith<$Res>? get panelizationSummary {
+    if (_value.panelizationSummary == null) {
+      return null;
+    }
+
+    return $PanelizationSummaryCopyWith<$Res>(_value.panelizationSummary!,
         (value) {
       return _then(_value.copyWith(panelizationSummary: value) as $Val);
     });
@@ -2175,8 +2189,12 @@ class _$VolumeInfoCopyWithImpl<$Res, $Val extends VolumeInfo>
 
   @override
   @pragma('vm:prefer-inline')
-  $ImageLinksCopyWith<$Res> get imageLinks {
-    return $ImageLinksCopyWith<$Res>(_value.imageLinks, (value) {
+  $ImageLinksCopyWith<$Res>? get imageLinks {
+    if (_value.imageLinks == null) {
+      return null;
+    }
+
+    return $ImageLinksCopyWith<$Res>(_value.imageLinks!, (value) {
       return _then(_value.copyWith(imageLinks: value) as $Val);
     });
   }
@@ -2192,20 +2210,20 @@ abstract class _$$VolumeInfoImplCopyWith<$Res>
   @useResult
   $Res call(
       {String title,
-      List<String> authors,
-      String publisher,
-      DateTime publishedDate,
-      String description,
-      List<IndustryIdentifier> industryIdentifiers,
+      List<String>? authors,
+      String? publisher,
+      String? publishedDate,
+      String? description,
+      List<IndustryIdentifier>? industryIdentifiers,
       ReadingModes readingModes,
       int? pageCount,
       String printType,
-      List<String> categories,
+      List<String>? categories,
       String maturityRating,
       bool allowAnonLogging,
       String contentVersion,
-      PanelizationSummary panelizationSummary,
-      ImageLinks imageLinks,
+      PanelizationSummary? panelizationSummary,
+      ImageLinks? imageLinks,
       String language,
       String previewLink,
       String infoLink,
@@ -2214,9 +2232,9 @@ abstract class _$$VolumeInfoImplCopyWith<$Res>
   @override
   $ReadingModesCopyWith<$Res> get readingModes;
   @override
-  $PanelizationSummaryCopyWith<$Res> get panelizationSummary;
+  $PanelizationSummaryCopyWith<$Res>? get panelizationSummary;
   @override
-  $ImageLinksCopyWith<$Res> get imageLinks;
+  $ImageLinksCopyWith<$Res>? get imageLinks;
 }
 
 /// @nodoc
@@ -2231,20 +2249,20 @@ class __$$VolumeInfoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
-    Object? authors = null,
-    Object? publisher = null,
-    Object? publishedDate = null,
-    Object? description = null,
-    Object? industryIdentifiers = null,
+    Object? authors = freezed,
+    Object? publisher = freezed,
+    Object? publishedDate = freezed,
+    Object? description = freezed,
+    Object? industryIdentifiers = freezed,
     Object? readingModes = null,
     Object? pageCount = freezed,
     Object? printType = null,
-    Object? categories = null,
+    Object? categories = freezed,
     Object? maturityRating = null,
     Object? allowAnonLogging = null,
     Object? contentVersion = null,
-    Object? panelizationSummary = null,
-    Object? imageLinks = null,
+    Object? panelizationSummary = freezed,
+    Object? imageLinks = freezed,
     Object? language = null,
     Object? previewLink = null,
     Object? infoLink = null,
@@ -2255,26 +2273,26 @@ class __$$VolumeInfoImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      authors: null == authors
+      authors: freezed == authors
           ? _value._authors
           : authors // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      publisher: null == publisher
+              as List<String>?,
+      publisher: freezed == publisher
           ? _value.publisher
           : publisher // ignore: cast_nullable_to_non_nullable
-              as String,
-      publishedDate: null == publishedDate
+              as String?,
+      publishedDate: freezed == publishedDate
           ? _value.publishedDate
           : publishedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      description: null == description
+              as String?,
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      industryIdentifiers: null == industryIdentifiers
+              as String?,
+      industryIdentifiers: freezed == industryIdentifiers
           ? _value._industryIdentifiers
           : industryIdentifiers // ignore: cast_nullable_to_non_nullable
-              as List<IndustryIdentifier>,
+              as List<IndustryIdentifier>?,
       readingModes: null == readingModes
           ? _value.readingModes
           : readingModes // ignore: cast_nullable_to_non_nullable
@@ -2287,10 +2305,10 @@ class __$$VolumeInfoImplCopyWithImpl<$Res>
           ? _value.printType
           : printType // ignore: cast_nullable_to_non_nullable
               as String,
-      categories: null == categories
+      categories: freezed == categories
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
       maturityRating: null == maturityRating
           ? _value.maturityRating
           : maturityRating // ignore: cast_nullable_to_non_nullable
@@ -2303,14 +2321,14 @@ class __$$VolumeInfoImplCopyWithImpl<$Res>
           ? _value.contentVersion
           : contentVersion // ignore: cast_nullable_to_non_nullable
               as String,
-      panelizationSummary: null == panelizationSummary
+      panelizationSummary: freezed == panelizationSummary
           ? _value.panelizationSummary
           : panelizationSummary // ignore: cast_nullable_to_non_nullable
-              as PanelizationSummary,
-      imageLinks: null == imageLinks
+              as PanelizationSummary?,
+      imageLinks: freezed == imageLinks
           ? _value.imageLinks
           : imageLinks // ignore: cast_nullable_to_non_nullable
-              as ImageLinks,
+              as ImageLinks?,
       language: null == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
@@ -2336,15 +2354,15 @@ class __$$VolumeInfoImplCopyWithImpl<$Res>
 class _$VolumeInfoImpl implements _VolumeInfo {
   const _$VolumeInfoImpl(
       {required this.title,
-      required final List<String> authors,
+      required final List<String>? authors,
       required this.publisher,
       required this.publishedDate,
       required this.description,
-      required final List<IndustryIdentifier> industryIdentifiers,
+      required final List<IndustryIdentifier>? industryIdentifiers,
       required this.readingModes,
       this.pageCount,
       required this.printType,
-      required final List<String> categories,
+      required final List<String>? categories,
       required this.maturityRating,
       required this.allowAnonLogging,
       required this.contentVersion,
@@ -2360,27 +2378,31 @@ class _$VolumeInfoImpl implements _VolumeInfo {
 
   @override
   final String title;
-  final List<String> _authors;
+  final List<String>? _authors;
   @override
-  List<String> get authors {
+  List<String>? get authors {
+    final value = _authors;
+    if (value == null) return null;
     if (_authors is EqualUnmodifiableListView) return _authors;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_authors);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  final String publisher;
+  final String? publisher;
   @override
-  final DateTime publishedDate;
+  final String? publishedDate;
   @override
-  final String description;
-  final List<IndustryIdentifier> _industryIdentifiers;
+  final String? description;
+  final List<IndustryIdentifier>? _industryIdentifiers;
   @override
-  List<IndustryIdentifier> get industryIdentifiers {
+  List<IndustryIdentifier>? get industryIdentifiers {
+    final value = _industryIdentifiers;
+    if (value == null) return null;
     if (_industryIdentifiers is EqualUnmodifiableListView)
       return _industryIdentifiers;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_industryIdentifiers);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -2389,12 +2411,14 @@ class _$VolumeInfoImpl implements _VolumeInfo {
   final int? pageCount;
   @override
   final String printType;
-  final List<String> _categories;
+  final List<String>? _categories;
   @override
-  List<String> get categories {
+  List<String>? get categories {
+    final value = _categories;
+    if (value == null) return null;
     if (_categories is EqualUnmodifiableListView) return _categories;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_categories);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -2404,9 +2428,9 @@ class _$VolumeInfoImpl implements _VolumeInfo {
   @override
   final String contentVersion;
   @override
-  final PanelizationSummary panelizationSummary;
+  final PanelizationSummary? panelizationSummary;
   @override
-  final ImageLinks imageLinks;
+  final ImageLinks? imageLinks;
   @override
   final String language;
   @override
@@ -2498,20 +2522,20 @@ class _$VolumeInfoImpl implements _VolumeInfo {
 abstract class _VolumeInfo implements VolumeInfo {
   const factory _VolumeInfo(
       {required final String title,
-      required final List<String> authors,
-      required final String publisher,
-      required final DateTime publishedDate,
-      required final String description,
-      required final List<IndustryIdentifier> industryIdentifiers,
+      required final List<String>? authors,
+      required final String? publisher,
+      required final String? publishedDate,
+      required final String? description,
+      required final List<IndustryIdentifier>? industryIdentifiers,
       required final ReadingModes readingModes,
       final int? pageCount,
       required final String printType,
-      required final List<String> categories,
+      required final List<String>? categories,
       required final String maturityRating,
       required final bool allowAnonLogging,
       required final String contentVersion,
-      required final PanelizationSummary panelizationSummary,
-      required final ImageLinks imageLinks,
+      required final PanelizationSummary? panelizationSummary,
+      required final ImageLinks? imageLinks,
       required final String language,
       required final String previewLink,
       required final String infoLink,
@@ -2520,15 +2544,15 @@ abstract class _VolumeInfo implements VolumeInfo {
   @override
   String get title;
   @override
-  List<String> get authors;
+  List<String>? get authors;
   @override
-  String get publisher;
+  String? get publisher;
   @override
-  DateTime get publishedDate;
+  String? get publishedDate;
   @override
-  String get description;
+  String? get description;
   @override
-  List<IndustryIdentifier> get industryIdentifiers;
+  List<IndustryIdentifier>? get industryIdentifiers;
   @override
   ReadingModes get readingModes;
   @override
@@ -2536,7 +2560,7 @@ abstract class _VolumeInfo implements VolumeInfo {
   @override
   String get printType;
   @override
-  List<String> get categories;
+  List<String>? get categories;
   @override
   String get maturityRating;
   @override
@@ -2544,9 +2568,9 @@ abstract class _VolumeInfo implements VolumeInfo {
   @override
   String get contentVersion;
   @override
-  PanelizationSummary get panelizationSummary;
+  PanelizationSummary? get panelizationSummary;
   @override
-  ImageLinks get imageLinks;
+  ImageLinks? get imageLinks;
   @override
   String get language;
   @override

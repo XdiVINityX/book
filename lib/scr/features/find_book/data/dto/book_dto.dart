@@ -3,24 +3,25 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'book_dto.g.dart';
 
 @JsonSerializable()
-class BookDto {
-  BookDto({
+class BooksGeneralDto {
+  BooksGeneralDto({
     required this.kind,
     required this.totalItems,
-    required this.items,
+    required this.books,
   });
 
-  factory BookDto.fromJson(Map<String, dynamic> json) => _$BookDtoFromJson(json);
+  factory BooksGeneralDto.fromJson(Map<String, dynamic> json) => _$BooksGeneralDtoFromJson(json);
   final String kind;
   final int totalItems;
-  final List<ItemDto> items;
+  @JsonKey(name: 'items')
+  final List<BookDto>? books;
 
-  Map<String, dynamic> toJson() => _$BookDtoToJson(this);
+  Map<String, dynamic> toJson() => _$BooksGeneralDtoToJson(this);
 }
 
 @JsonSerializable()
-class ItemDto {
-  ItemDto({
+class BookDto {
+  BookDto({
     required this.kind,
     required this.id,
     required this.etag,
@@ -28,10 +29,10 @@ class ItemDto {
     required this.volumeInfo,
     required this.saleInfo,
     required this.accessInfo,
-    required this.searchInfo,
+    this.searchInfo,
   });
 
-  factory ItemDto.fromJson(Map<String, dynamic> json) => _$ItemDtoFromJson(json);
+  factory BookDto.fromJson(Map<String, dynamic> json) => _$BookDtoFromJson(json);
   final String kind;
   final String id;
   final String etag;
@@ -39,9 +40,9 @@ class ItemDto {
   final VolumeInfoDto volumeInfo;
   final SaleInfoDto saleInfo;
   final AccessInfoDto accessInfo;
-  final SearchInfoDto searchInfo;
+  final SearchInfoDto? searchInfo;
 
-  Map<String, dynamic> toJson() => _$ItemDtoToJson(this);
+  Map<String, dynamic> toJson() => _$BookDtoToJson(this);
 }
 
 @JsonSerializable()
@@ -69,7 +70,7 @@ class AccessInfoDto {
   final String textToSpeechPermission;
   final EpubDto epub;
   final PdfDto pdf;
-  final String webReaderLink;
+  final String? webReaderLink;
   final String accessViewStatus;
   final bool quoteSharingAllowed;
 
@@ -85,7 +86,6 @@ class EpubDto {
 
   factory EpubDto.fromJson(Map<String, dynamic> json) => _$EpubDtoFromJson(json);
   final bool isAvailable;
-
   final String? acsTokenLink;
 
   Map<String, dynamic> toJson() => _$EpubDtoToJson(this);
@@ -95,13 +95,12 @@ class EpubDto {
 class PdfDto {
   PdfDto({
     required this.isAvailable,
-    required this.acsTokenLink,
+    this.acsTokenLink,
   });
 
   factory PdfDto.fromJson(Map<String, dynamic> json) => _$PdfDtoFromJson(json);
   final bool isAvailable;
-
-  final String acsTokenLink;
+  final String? acsTokenLink;
 
   Map<String, dynamic> toJson() => _$PdfDtoToJson(this);
 }
@@ -154,7 +153,7 @@ class OfferDto {
     required this.finskyOfferType,
     required this.listPrice,
     required this.retailPrice,
-    required this.giftable,
+    this.giftable,
   });
 
   factory OfferDto.fromJson(Map<String, dynamic> json) => _$OfferDtoFromJson(json);
@@ -162,7 +161,7 @@ class OfferDto {
   final int finskyOfferType;
   final OfferListPriceDto listPrice;
   final OfferListPriceDto retailPrice;
-  final bool giftable;
+  final bool? giftable;
 
   Map<String, dynamic> toJson() => _$OfferDtoToJson(this);
 }
@@ -185,12 +184,12 @@ class OfferListPriceDto {
 @JsonSerializable()
 class SearchInfoDto {
   SearchInfoDto({
-    required this.textSnippet,
+    this.textSnippet,
   });
 
   factory SearchInfoDto.fromJson(Map<String, dynamic> json) =>
       _$SearchInfoDtoFromJson(json);
-  final String textSnippet;
+  final String? textSnippet;
 
   Map<String, dynamic> toJson() => _$SearchInfoDtoToJson(this);
 }
@@ -199,20 +198,20 @@ class SearchInfoDto {
 class VolumeInfoDto {
   VolumeInfoDto({
     required this.title,
-    required this.authors,
-    required this.publisher,
-    required this.publishedDate,
-    required this.description,
+    this.authors,
+    this.publisher,
+    this.publishedDate,
+    this.description,
     required this.industryIdentifiers,
     required this.readingModes,
     this.pageCount,
     required this.printType,
-    required this.categories,
+    this.categories,
     required this.maturityRating,
     required this.allowAnonLogging,
     required this.contentVersion,
-    required this.panelizationSummary,
-    required this.imageLinks,
+    this.panelizationSummary,
+    this.imageLinks,
     required this.language,
     required this.previewLink,
     required this.infoLink,
@@ -223,20 +222,20 @@ class VolumeInfoDto {
       _$VolumeInfoDtoFromJson(json);
 
   final String title;
-  final List<String> authors;
-  final String publisher;
-  final DateTime publishedDate;
-  final String description;
-  final List<IndustryIdentifierDto> industryIdentifiers;
+  final List<String>? authors;
+  final String? publisher;
+  final String? publishedDate;
+  final String? description;
+  final List<IndustryIdentifierDto>? industryIdentifiers;
   final ReadingModesDto readingModes;
   final int? pageCount;
   final String printType;
-  final List<String> categories;
+  final List<String>? categories;
   final String maturityRating;
   final bool allowAnonLogging;
   final String contentVersion;
-  final PanelizationSummaryDto panelizationSummary;
-  final ImageLinksDto imageLinks;
+  final PanelizationSummaryDto? panelizationSummary;
+  final ImageLinksDto? imageLinks;
   final String language;
   final String previewLink;
   final String infoLink;
@@ -277,7 +276,6 @@ class IndustryIdentifierDto {
 
 @JsonSerializable()
 class PanelizationSummaryDto {
-
   PanelizationSummaryDto({
     required this.containsEpubBubbles,
     required this.containsImageBubbles,
