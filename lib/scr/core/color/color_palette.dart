@@ -9,7 +9,11 @@ abstract class LightColorPalette{
   /// https://www.color-name.com/hex/FF607D.
   static const Color brinkPink = Color(0xFFFF607D);
 
-  //add more
+  /// Granite Gray
+  ///
+  /// https://www.color-name.com/hex/666666
+  static const Color graniteGray = Color(0xFF666666);
+
 }
 
 

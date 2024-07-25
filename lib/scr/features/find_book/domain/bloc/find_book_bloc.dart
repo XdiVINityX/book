@@ -16,6 +16,8 @@ class FindBookBloc extends Bloc<FindBookEvent, FindBookState> {
     on<FindBookEvent>(
       (event, emit) => switch (event) {
         final FindBookEvent$Started event => _initialization(event, emit),
+        final FindBookEvent$SearchBook event => _searchBook(event, emit),
+        final FindBookEvent$LoadMoreBook event => _loadMoreBooks(event, emit),
       },
     );
   }
@@ -23,15 +25,18 @@ class FindBookBloc extends Bloc<FindBookEvent, FindBookState> {
   final IFindBookRepository _findBookRepository;
 
   Future<void> _initialization(
-    FindBookEvent event,
+    FindBookEvent$Started event,
     Emitter<FindBookState> emitter,
   ) async {
     try {
+      const queryBook = 'Ведьмак';
       emitter(const FindBookState.loading());
       final BookGeneral booksGeneral =
-          await _findBookRepository.getBooks(queryBook: 'test');
+          await _findBookRepository.getBooks(queryBook: queryBook,paginationStartIndex: '0');
       emitter(
         FindBookState.success(
+          paginationIndex: 0,
+          queryBook: queryBook,
           books: booksGeneral.books,
           kind: booksGeneral.kind,
           totalItems: booksGeneral.totalItems,
@@ -41,5 +46,58 @@ class FindBookBloc extends Bloc<FindBookEvent, FindBookState> {
       const FindBookState.error();
       rethrow;
     }
+  }
+
+  Future<void> _searchBook(
+    FindBookEvent$SearchBook event,
+    Emitter<FindBookState> emitter,
+  ) async {
+    try {
+      emitter(const FindBookState$Loading());
+      final booksGeneral =
+          await _findBookRepository.getBooks(queryBook: event.query, paginationStartIndex: '0');
+      emitter(
+        FindBookState.success(
+          paginationIndex: 0,
+          queryBook: event.query,
+          books: booksGeneral.books,
+          kind: booksGeneral.kind,
+          totalItems: booksGeneral.totalItems,
+        ),
+      );
+    } on Object catch (e, s) {
+      const FindBookState$Error();
+    }
+  }
+
+  Future<void> _loadMoreBooks(
+    FindBookEvent$LoadMoreBook event,
+    Emitter<FindBookState> emitter,
+  ) async {
+    final newPaginationIndex = state.paginationIndex + 10;
+    emitter(
+      FindBookState.loadingMoreBook(
+        queryBook: state.queryBook,
+        totalItems: state.totalItems,
+        kind: state.kind,
+        books: state.books,
+        paginationIndex: newPaginationIndex,
+      ),
+    );
+
+    // TODO(null): check null
+    final newBooksGeneral = await _findBookRepository.getBooks(
+      queryBook: state.queryBook,
+      paginationStartIndex: state.paginationIndex.toString(),
+    );
+    emitter(
+      FindBookState.success(
+        paginationIndex: newPaginationIndex,
+        queryBook: state.queryBook,
+        kind: newBooksGeneral.kind,
+        totalItems: newBooksGeneral.totalItems,
+        books:[...?state.books, ...?newBooksGeneral.books] ,
+      ),
+    );
   }
 }

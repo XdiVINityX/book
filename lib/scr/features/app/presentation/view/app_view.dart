@@ -1,5 +1,7 @@
 import 'package:book/scr/app_dependencies.dart';
 import 'package:book/scr/core/assets/icons/icons.dart';
+import 'package:book/scr/core/color/color_theme.dart';
+import 'package:book/scr/core/text/text_theme.dart';
 import 'package:book/scr/features/find_book/domain/bloc/find_book_bloc.dart';
 import 'package:book/scr/features/find_book/presentation/view/find_book_view.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +17,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+          scaffoldBackgroundColor: Colors.white,
           useMaterial3: true,
+          extensions: [AppTextTheme.base(), AppColorScheme.light()],
         ),
         home: const HomePage(),
       );

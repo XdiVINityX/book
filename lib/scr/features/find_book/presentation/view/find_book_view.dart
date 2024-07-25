@@ -1,5 +1,7 @@
 import 'package:book/scr/features/find_book/domain/bloc/find_book_bloc.dart';
 import 'package:book/scr/features/find_book/domain/entity/book.dart';
+import 'package:book/scr/features/find_book/presentation/widget/book_list.dart';
+import 'package:book/scr/features/find_book/presentation/widget/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,7 +14,6 @@ class FindBookView extends StatelessWidget {
         builder: (context, state) => switch (state) {
           FindBookState$Loading() =>
             const Center(child: CircularProgressIndicator()),
-          // TODO: Handle this case.
           FindBookState$Error() =>
             const Center(child: Text('Произошла ошибка')),
           _ => const _BodyFindBookView(),
@@ -20,69 +21,49 @@ class FindBookView extends StatelessWidget {
       );
 }
 
-class _BodyFindBookView extends StatelessWidget {
-  const _BodyFindBookView({super.key});
+class _BodyFindBookView extends StatefulWidget {
+  const _BodyFindBookView();
+
+  @override
+  State<_BodyFindBookView> createState() => _BodyFindBookViewState();
+}
+
+class _BodyFindBookViewState extends State<_BodyFindBookView> {
+  void _searchBook(String query) {
+    context.read<FindBookBloc>().add(FindBookEvent$SearchBook(query));
+  }
+
+  void _loadMoreBooks() {
+    final bloc = context.read<FindBookBloc>();
+    if(bloc.state is FindBookState$LoadingMoreBook){
+      return;
+    }
+    bloc.add(const FindBookEvent$LoadMoreBook());
+  }
 
   @override
   Widget build(BuildContext context) => SafeArea(
-        child: SizedBox(
-          width: double.infinity,
-          child: Column(
-            children: [
-              const Text('Экран 1'),
-              const CustomTextField(),
-              Expanded(
-                child: BlocBuilder<FindBookBloc, FindBookState>(
-                  builder: (context, state) =>
-                      BooksListView(books: state.books),
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
-}
-
-class BooksListView extends StatelessWidget {
-  const BooksListView({super.key, required this.books});
-
-  final List<Book>? books;
-
-  @override
-  Widget build(BuildContext context) {
-    if (books != null) {
-      return ListView.builder(
-        itemBuilder: (context, index) => Column(
+        child: Column(
           children: [
-            _BookItem(bookName: books![index].volumeInfo.title),
-            const Divider(),
+            CustomTextField(
+              onSubmitted: _searchBook,
+            ),
+            Expanded(
+              child: BlocBuilder<FindBookBloc, FindBookState>(
+                builder: (context, state) {
+                  if (state.books != null) {
+                    return BookSliverList(
+                      books: state.books!,
+                      isLoadMore: state.isLoading,
+                      loadMore: _loadMoreBooks,
+                    );
+                  } else {
+                    return const Text('Ничего не найдено');
+                  }
+                },
+              ),
+            ),
           ],
-        ),
-        itemCount: books!.length,
-      );
-    }
-    return const Text('Книги не найдены');
-  }
-}
-
-class _BookItem extends StatelessWidget {
-  const _BookItem({super.key, required this.bookName});
-
-  final String bookName;
-
-  @override
-  Widget build(BuildContext context) => Text(bookName);
-}
-
-class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key});
-
-  @override
-  Widget build(BuildContext context) => const SizedBox(
-        width: double.infinity,
-        height: 40,
-        child: TextField(
-          decoration: InputDecoration(hintText: 'Найди свою книгу'),
         ),
       );
 }
