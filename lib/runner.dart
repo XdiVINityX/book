@@ -10,6 +10,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 Future<void> run() async => _runApp();
 
@@ -70,7 +71,8 @@ Future<void> initializeHttpClient($MutableDependencies dependencies) async {
         return handler.next(options);
       },
     ),
-    LogInterceptor(),
+    //LogInterceptor(responseBody: true),
+    PrettyDioLogger(),
   ];
 
   final DioService dioService =

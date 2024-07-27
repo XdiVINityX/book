@@ -2,7 +2,7 @@ import 'package:book/scr/app_dependencies.dart';
 import 'package:book/scr/core/assets/icons/icons.dart';
 import 'package:book/scr/core/color/color_theme.dart';
 import 'package:book/scr/core/text/text_theme.dart';
-import 'package:book/scr/features/find_book/domain/bloc/find_book_bloc.dart';
+import 'package:book/scr/features/find_book/domain/bloc/find_bloc/find_book_bloc.dart';
 import 'package:book/scr/features/find_book/presentation/view/find_book_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

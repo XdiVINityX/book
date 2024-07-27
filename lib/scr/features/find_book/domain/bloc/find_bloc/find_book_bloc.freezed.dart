@@ -1523,7 +1523,7 @@ class _$FindBookState$SuccessImpl implements FindBookState$Success {
       required this.kind,
       required this.totalItems,
       required final List<Book>? books,
-      this.paginationIndex = 0})
+      required this.paginationIndex})
       : _books = books;
 
   @override
@@ -1546,7 +1546,6 @@ class _$FindBookState$SuccessImpl implements FindBookState$Success {
   }
 
   @override
-  @JsonKey()
   final int paginationIndex;
 
   @override
@@ -1704,7 +1703,7 @@ abstract class FindBookState$Success implements FindBookState {
       required final String kind,
       required final String totalItems,
       required final List<Book>? books,
-      final int paginationIndex}) = _$FindBookState$SuccessImpl;
+      required final int paginationIndex}) = _$FindBookState$SuccessImpl;
 
   @override
   bool get isLoading;
@@ -1801,7 +1800,7 @@ class _$FindBookState$LoadingMoreBookImpl
       this.kind = '',
       this.totalItems = '',
       final List<Book>? books = const [],
-      this.paginationIndex = 0})
+      required this.paginationIndex})
       : _books = books;
 
   @override
@@ -1827,7 +1826,6 @@ class _$FindBookState$LoadingMoreBookImpl
   }
 
   @override
-  @JsonKey()
   final int paginationIndex;
 
   @override
@@ -1981,12 +1979,13 @@ class _$FindBookState$LoadingMoreBookImpl
 
 abstract class FindBookState$LoadingMoreBook implements FindBookState {
   const factory FindBookState$LoadingMoreBook(
-      {final bool isLoading,
-      required final String queryBook,
-      final String kind,
-      final String totalItems,
-      final List<Book>? books,
-      final int paginationIndex}) = _$FindBookState$LoadingMoreBookImpl;
+          {final bool isLoading,
+          required final String queryBook,
+          final String kind,
+          final String totalItems,
+          final List<Book>? books,
+          required final int paginationIndex}) =
+      _$FindBookState$LoadingMoreBookImpl;
 
   @override
   bool get isLoading;

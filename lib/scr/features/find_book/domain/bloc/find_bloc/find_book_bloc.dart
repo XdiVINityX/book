@@ -74,6 +74,9 @@ class FindBookBloc extends Bloc<FindBookEvent, FindBookState> {
     FindBookEvent$LoadMoreBook event,
     Emitter<FindBookState> emitter,
   ) async {
+    if(state is FindBookState$LoadingMoreBook){
+      return;
+    }
     final newPaginationIndex = state.paginationIndex + 10;
     emitter(
       FindBookState.loadingMoreBook(

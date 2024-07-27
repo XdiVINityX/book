@@ -1,5 +1,4 @@
-import 'package:book/scr/features/find_book/domain/bloc/find_book_bloc.dart';
-import 'package:book/scr/features/find_book/domain/entity/book.dart';
+import 'package:book/scr/features/find_book/domain/bloc/find_bloc/find_book_bloc.dart';
 import 'package:book/scr/features/find_book/presentation/widget/book_list.dart';
 import 'package:book/scr/features/find_book/presentation/widget/custom_text_field.dart';
 import 'package:flutter/material.dart';
@@ -34,11 +33,12 @@ class _BodyFindBookViewState extends State<_BodyFindBookView> {
   }
 
   void _loadMoreBooks() {
-    final bloc = context.read<FindBookBloc>();
-    if(bloc.state is FindBookState$LoadingMoreBook){
-      return;
-    }
-    bloc.add(const FindBookEvent$LoadMoreBook());
+    final bloc = context.read<FindBookBloc>()
+    .add(const FindBookEvent$LoadMoreBook());
+  }
+
+  void _navigateToShelf(){
+
   }
 
   @override
