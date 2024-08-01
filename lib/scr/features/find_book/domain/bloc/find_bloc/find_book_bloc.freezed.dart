@@ -452,64 +452,68 @@ abstract class FindBookEvent$LoadMoreBook implements FindBookEvent {
 mixin _$FindBookState {
   bool get isLoading => throw _privateConstructorUsedError;
   String get queryBook => throw _privateConstructorUsedError;
-  String get kind => throw _privateConstructorUsedError;
   String get totalItems => throw _privateConstructorUsedError;
   List<Book>? get books => throw _privateConstructorUsedError;
   int get paginationIndex => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         initial,
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         loading,
-    required TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)
+    required TResult Function(
+            bool isLoading,
+            String queryBook,
+            String totalItems,
+            List<Book>? books,
+            int paginationIndex,
+            String message)
         error,
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         success,
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         loadingMoreBook,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         initial,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loading,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex, String message)?
         error,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         success,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loadingMoreBook,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         initial,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loading,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex, String message)?
         error,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         success,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loadingMoreBook,
     required TResult orElse(),
   }) =>
@@ -558,7 +562,6 @@ abstract class $FindBookStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       String queryBook,
-      String kind,
       String totalItems,
       List<Book>? books,
       int paginationIndex});
@@ -579,7 +582,6 @@ class _$FindBookStateCopyWithImpl<$Res, $Val extends FindBookState>
   $Res call({
     Object? isLoading = null,
     Object? queryBook = null,
-    Object? kind = null,
     Object? totalItems = null,
     Object? books = freezed,
     Object? paginationIndex = null,
@@ -592,10 +594,6 @@ class _$FindBookStateCopyWithImpl<$Res, $Val extends FindBookState>
       queryBook: null == queryBook
           ? _value.queryBook
           : queryBook // ignore: cast_nullable_to_non_nullable
-              as String,
-      kind: null == kind
-          ? _value.kind
-          : kind // ignore: cast_nullable_to_non_nullable
               as String,
       totalItems: null == totalItems
           ? _value.totalItems
@@ -625,7 +623,6 @@ abstract class _$$FindBookState$InitialImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       String queryBook,
-      String kind,
       String totalItems,
       List<Book>? books,
       int paginationIndex});
@@ -644,7 +641,6 @@ class __$$FindBookState$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? queryBook = null,
-    Object? kind = null,
     Object? totalItems = null,
     Object? books = freezed,
     Object? paginationIndex = null,
@@ -657,10 +653,6 @@ class __$$FindBookState$InitialImplCopyWithImpl<$Res>
       queryBook: null == queryBook
           ? _value.queryBook
           : queryBook // ignore: cast_nullable_to_non_nullable
-              as String,
-      kind: null == kind
-          ? _value.kind
-          : kind // ignore: cast_nullable_to_non_nullable
               as String,
       totalItems: null == totalItems
           ? _value.totalItems
@@ -684,7 +676,6 @@ class _$FindBookState$InitialImpl implements FindBookState$Initial {
   const _$FindBookState$InitialImpl(
       {this.isLoading = false,
       this.queryBook = '',
-      this.kind = '',
       this.totalItems = '',
       final List<Book>? books = const [],
       this.paginationIndex = 0})
@@ -696,9 +687,6 @@ class _$FindBookState$InitialImpl implements FindBookState$Initial {
   @override
   @JsonKey()
   final String queryBook;
-  @override
-  @JsonKey()
-  final String kind;
   @override
   @JsonKey()
   final String totalItems;
@@ -719,7 +707,7 @@ class _$FindBookState$InitialImpl implements FindBookState$Initial {
 
   @override
   String toString() {
-    return 'FindBookState.initial(isLoading: $isLoading, queryBook: $queryBook, kind: $kind, totalItems: $totalItems, books: $books, paginationIndex: $paginationIndex)';
+    return 'FindBookState.initial(isLoading: $isLoading, queryBook: $queryBook, totalItems: $totalItems, books: $books, paginationIndex: $paginationIndex)';
   }
 
   @override
@@ -731,7 +719,6 @@ class _$FindBookState$InitialImpl implements FindBookState$Initial {
                 other.isLoading == isLoading) &&
             (identical(other.queryBook, queryBook) ||
                 other.queryBook == queryBook) &&
-            (identical(other.kind, kind) || other.kind == kind) &&
             (identical(other.totalItems, totalItems) ||
                 other.totalItems == totalItems) &&
             const DeepCollectionEquality().equals(other._books, _books) &&
@@ -740,8 +727,8 @@ class _$FindBookState$InitialImpl implements FindBookState$Initial {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, queryBook, kind,
-      totalItems, const DeepCollectionEquality().hash(_books), paginationIndex);
+  int get hashCode => Object.hash(runtimeType, isLoading, queryBook, totalItems,
+      const DeepCollectionEquality().hash(_books), paginationIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -753,72 +740,75 @@ class _$FindBookState$InitialImpl implements FindBookState$Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         initial,
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         loading,
-    required TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)
+    required TResult Function(
+            bool isLoading,
+            String queryBook,
+            String totalItems,
+            List<Book>? books,
+            int paginationIndex,
+            String message)
         error,
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         success,
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         loadingMoreBook,
   }) {
-    return initial(
-        isLoading, queryBook, kind, totalItems, books, paginationIndex);
+    return initial(isLoading, queryBook, totalItems, books, paginationIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         initial,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loading,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex, String message)?
         error,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         success,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loadingMoreBook,
   }) {
     return initial?.call(
-        isLoading, queryBook, kind, totalItems, books, paginationIndex);
+        isLoading, queryBook, totalItems, books, paginationIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         initial,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loading,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex, String message)?
         error,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         success,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loadingMoreBook,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(
-          isLoading, queryBook, kind, totalItems, books, paginationIndex);
+      return initial(isLoading, queryBook, totalItems, books, paginationIndex);
     }
     return orElse();
   }
@@ -869,7 +859,6 @@ abstract class FindBookState$Initial implements FindBookState {
   const factory FindBookState$Initial(
       {final bool isLoading,
       final String queryBook,
-      final String kind,
       final String totalItems,
       final List<Book>? books,
       final int paginationIndex}) = _$FindBookState$InitialImpl;
@@ -878,8 +867,6 @@ abstract class FindBookState$Initial implements FindBookState {
   bool get isLoading;
   @override
   String get queryBook;
-  @override
-  String get kind;
   @override
   String get totalItems;
   @override
@@ -904,7 +891,6 @@ abstract class _$$FindBookState$LoadingImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       String queryBook,
-      String kind,
       String totalItems,
       List<Book>? books,
       int paginationIndex});
@@ -923,7 +909,6 @@ class __$$FindBookState$LoadingImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? queryBook = null,
-    Object? kind = null,
     Object? totalItems = null,
     Object? books = freezed,
     Object? paginationIndex = null,
@@ -936,10 +921,6 @@ class __$$FindBookState$LoadingImplCopyWithImpl<$Res>
       queryBook: null == queryBook
           ? _value.queryBook
           : queryBook // ignore: cast_nullable_to_non_nullable
-              as String,
-      kind: null == kind
-          ? _value.kind
-          : kind // ignore: cast_nullable_to_non_nullable
               as String,
       totalItems: null == totalItems
           ? _value.totalItems
@@ -963,7 +944,6 @@ class _$FindBookState$LoadingImpl implements FindBookState$Loading {
   const _$FindBookState$LoadingImpl(
       {this.isLoading = false,
       this.queryBook = '',
-      this.kind = '',
       this.totalItems = '',
       final List<Book>? books = const [],
       this.paginationIndex = 0})
@@ -975,9 +955,6 @@ class _$FindBookState$LoadingImpl implements FindBookState$Loading {
   @override
   @JsonKey()
   final String queryBook;
-  @override
-  @JsonKey()
-  final String kind;
   @override
   @JsonKey()
   final String totalItems;
@@ -998,7 +975,7 @@ class _$FindBookState$LoadingImpl implements FindBookState$Loading {
 
   @override
   String toString() {
-    return 'FindBookState.loading(isLoading: $isLoading, queryBook: $queryBook, kind: $kind, totalItems: $totalItems, books: $books, paginationIndex: $paginationIndex)';
+    return 'FindBookState.loading(isLoading: $isLoading, queryBook: $queryBook, totalItems: $totalItems, books: $books, paginationIndex: $paginationIndex)';
   }
 
   @override
@@ -1010,7 +987,6 @@ class _$FindBookState$LoadingImpl implements FindBookState$Loading {
                 other.isLoading == isLoading) &&
             (identical(other.queryBook, queryBook) ||
                 other.queryBook == queryBook) &&
-            (identical(other.kind, kind) || other.kind == kind) &&
             (identical(other.totalItems, totalItems) ||
                 other.totalItems == totalItems) &&
             const DeepCollectionEquality().equals(other._books, _books) &&
@@ -1019,8 +995,8 @@ class _$FindBookState$LoadingImpl implements FindBookState$Loading {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, queryBook, kind,
-      totalItems, const DeepCollectionEquality().hash(_books), paginationIndex);
+  int get hashCode => Object.hash(runtimeType, isLoading, queryBook, totalItems,
+      const DeepCollectionEquality().hash(_books), paginationIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -1032,72 +1008,75 @@ class _$FindBookState$LoadingImpl implements FindBookState$Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         initial,
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         loading,
-    required TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)
+    required TResult Function(
+            bool isLoading,
+            String queryBook,
+            String totalItems,
+            List<Book>? books,
+            int paginationIndex,
+            String message)
         error,
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         success,
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         loadingMoreBook,
   }) {
-    return loading(
-        isLoading, queryBook, kind, totalItems, books, paginationIndex);
+    return loading(isLoading, queryBook, totalItems, books, paginationIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         initial,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loading,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex, String message)?
         error,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         success,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loadingMoreBook,
   }) {
     return loading?.call(
-        isLoading, queryBook, kind, totalItems, books, paginationIndex);
+        isLoading, queryBook, totalItems, books, paginationIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         initial,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loading,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex, String message)?
         error,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         success,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loadingMoreBook,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(
-          isLoading, queryBook, kind, totalItems, books, paginationIndex);
+      return loading(isLoading, queryBook, totalItems, books, paginationIndex);
     }
     return orElse();
   }
@@ -1148,7 +1127,6 @@ abstract class FindBookState$Loading implements FindBookState {
   const factory FindBookState$Loading(
       {final bool isLoading,
       final String queryBook,
-      final String kind,
       final String totalItems,
       final List<Book>? books,
       final int paginationIndex}) = _$FindBookState$LoadingImpl;
@@ -1157,8 +1135,6 @@ abstract class FindBookState$Loading implements FindBookState {
   bool get isLoading;
   @override
   String get queryBook;
-  @override
-  String get kind;
   @override
   String get totalItems;
   @override
@@ -1182,10 +1158,10 @@ abstract class _$$FindBookState$ErrorImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       String queryBook,
-      String kind,
       String totalItems,
       List<Book>? books,
-      int paginationIndex});
+      int paginationIndex,
+      String message});
 }
 
 /// @nodoc
@@ -1201,10 +1177,10 @@ class __$$FindBookState$ErrorImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? queryBook = null,
-    Object? kind = null,
     Object? totalItems = null,
     Object? books = freezed,
     Object? paginationIndex = null,
+    Object? message = null,
   }) {
     return _then(_$FindBookState$ErrorImpl(
       isLoading: null == isLoading
@@ -1214,10 +1190,6 @@ class __$$FindBookState$ErrorImplCopyWithImpl<$Res>
       queryBook: null == queryBook
           ? _value.queryBook
           : queryBook // ignore: cast_nullable_to_non_nullable
-              as String,
-      kind: null == kind
-          ? _value.kind
-          : kind // ignore: cast_nullable_to_non_nullable
               as String,
       totalItems: null == totalItems
           ? _value.totalItems
@@ -1231,6 +1203,10 @@ class __$$FindBookState$ErrorImplCopyWithImpl<$Res>
           ? _value.paginationIndex
           : paginationIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1241,10 +1217,10 @@ class _$FindBookState$ErrorImpl implements FindBookState$Error {
   const _$FindBookState$ErrorImpl(
       {this.isLoading = false,
       this.queryBook = '',
-      this.kind = '',
       this.totalItems = '',
       final List<Book>? books = const [],
-      this.paginationIndex = 0})
+      this.paginationIndex = 0,
+      required this.message})
       : _books = books;
 
   @override
@@ -1253,9 +1229,6 @@ class _$FindBookState$ErrorImpl implements FindBookState$Error {
   @override
   @JsonKey()
   final String queryBook;
-  @override
-  @JsonKey()
-  final String kind;
   @override
   @JsonKey()
   final String totalItems;
@@ -1273,10 +1246,12 @@ class _$FindBookState$ErrorImpl implements FindBookState$Error {
   @override
   @JsonKey()
   final int paginationIndex;
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'FindBookState.error(isLoading: $isLoading, queryBook: $queryBook, kind: $kind, totalItems: $totalItems, books: $books, paginationIndex: $paginationIndex)';
+    return 'FindBookState.error(isLoading: $isLoading, queryBook: $queryBook, totalItems: $totalItems, books: $books, paginationIndex: $paginationIndex, message: $message)';
   }
 
   @override
@@ -1288,17 +1263,17 @@ class _$FindBookState$ErrorImpl implements FindBookState$Error {
                 other.isLoading == isLoading) &&
             (identical(other.queryBook, queryBook) ||
                 other.queryBook == queryBook) &&
-            (identical(other.kind, kind) || other.kind == kind) &&
             (identical(other.totalItems, totalItems) ||
                 other.totalItems == totalItems) &&
             const DeepCollectionEquality().equals(other._books, _books) &&
             (identical(other.paginationIndex, paginationIndex) ||
-                other.paginationIndex == paginationIndex));
+                other.paginationIndex == paginationIndex) &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, queryBook, kind,
-      totalItems, const DeepCollectionEquality().hash(_books), paginationIndex);
+  int get hashCode => Object.hash(runtimeType, isLoading, queryBook, totalItems,
+      const DeepCollectionEquality().hash(_books), paginationIndex, message);
 
   @JsonKey(ignore: true)
   @override
@@ -1310,72 +1285,77 @@ class _$FindBookState$ErrorImpl implements FindBookState$Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         initial,
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         loading,
-    required TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)
+    required TResult Function(
+            bool isLoading,
+            String queryBook,
+            String totalItems,
+            List<Book>? books,
+            int paginationIndex,
+            String message)
         error,
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         success,
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         loadingMoreBook,
   }) {
     return error(
-        isLoading, queryBook, kind, totalItems, books, paginationIndex);
+        isLoading, queryBook, totalItems, books, paginationIndex, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         initial,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loading,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex, String message)?
         error,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         success,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loadingMoreBook,
   }) {
     return error?.call(
-        isLoading, queryBook, kind, totalItems, books, paginationIndex);
+        isLoading, queryBook, totalItems, books, paginationIndex, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         initial,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loading,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex, String message)?
         error,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         success,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loadingMoreBook,
     required TResult orElse(),
   }) {
     if (error != null) {
       return error(
-          isLoading, queryBook, kind, totalItems, books, paginationIndex);
+          isLoading, queryBook, totalItems, books, paginationIndex, message);
     }
     return orElse();
   }
@@ -1426,23 +1406,22 @@ abstract class FindBookState$Error implements FindBookState {
   const factory FindBookState$Error(
       {final bool isLoading,
       final String queryBook,
-      final String kind,
       final String totalItems,
       final List<Book>? books,
-      final int paginationIndex}) = _$FindBookState$ErrorImpl;
+      final int paginationIndex,
+      required final String message}) = _$FindBookState$ErrorImpl;
 
   @override
   bool get isLoading;
   @override
   String get queryBook;
   @override
-  String get kind;
-  @override
   String get totalItems;
   @override
   List<Book>? get books;
   @override
   int get paginationIndex;
+  String get message;
   @override
   @JsonKey(ignore: true)
   _$$FindBookState$ErrorImplCopyWith<_$FindBookState$ErrorImpl> get copyWith =>
@@ -1461,7 +1440,6 @@ abstract class _$$FindBookState$SuccessImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       String queryBook,
-      String kind,
       String totalItems,
       List<Book>? books,
       int paginationIndex});
@@ -1480,7 +1458,6 @@ class __$$FindBookState$SuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? queryBook = null,
-    Object? kind = null,
     Object? totalItems = null,
     Object? books = freezed,
     Object? paginationIndex = null,
@@ -1493,10 +1470,6 @@ class __$$FindBookState$SuccessImplCopyWithImpl<$Res>
       queryBook: null == queryBook
           ? _value.queryBook
           : queryBook // ignore: cast_nullable_to_non_nullable
-              as String,
-      kind: null == kind
-          ? _value.kind
-          : kind // ignore: cast_nullable_to_non_nullable
               as String,
       totalItems: null == totalItems
           ? _value.totalItems
@@ -1520,7 +1493,6 @@ class _$FindBookState$SuccessImpl implements FindBookState$Success {
   const _$FindBookState$SuccessImpl(
       {this.isLoading = false,
       required this.queryBook,
-      required this.kind,
       required this.totalItems,
       required final List<Book>? books,
       required this.paginationIndex})
@@ -1531,8 +1503,6 @@ class _$FindBookState$SuccessImpl implements FindBookState$Success {
   final bool isLoading;
   @override
   final String queryBook;
-  @override
-  final String kind;
   @override
   final String totalItems;
   final List<Book>? _books;
@@ -1550,7 +1520,7 @@ class _$FindBookState$SuccessImpl implements FindBookState$Success {
 
   @override
   String toString() {
-    return 'FindBookState.success(isLoading: $isLoading, queryBook: $queryBook, kind: $kind, totalItems: $totalItems, books: $books, paginationIndex: $paginationIndex)';
+    return 'FindBookState.success(isLoading: $isLoading, queryBook: $queryBook, totalItems: $totalItems, books: $books, paginationIndex: $paginationIndex)';
   }
 
   @override
@@ -1562,7 +1532,6 @@ class _$FindBookState$SuccessImpl implements FindBookState$Success {
                 other.isLoading == isLoading) &&
             (identical(other.queryBook, queryBook) ||
                 other.queryBook == queryBook) &&
-            (identical(other.kind, kind) || other.kind == kind) &&
             (identical(other.totalItems, totalItems) ||
                 other.totalItems == totalItems) &&
             const DeepCollectionEquality().equals(other._books, _books) &&
@@ -1571,8 +1540,8 @@ class _$FindBookState$SuccessImpl implements FindBookState$Success {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, queryBook, kind,
-      totalItems, const DeepCollectionEquality().hash(_books), paginationIndex);
+  int get hashCode => Object.hash(runtimeType, isLoading, queryBook, totalItems,
+      const DeepCollectionEquality().hash(_books), paginationIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -1584,72 +1553,75 @@ class _$FindBookState$SuccessImpl implements FindBookState$Success {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         initial,
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         loading,
-    required TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)
+    required TResult Function(
+            bool isLoading,
+            String queryBook,
+            String totalItems,
+            List<Book>? books,
+            int paginationIndex,
+            String message)
         error,
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         success,
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         loadingMoreBook,
   }) {
-    return success(
-        isLoading, queryBook, kind, totalItems, books, paginationIndex);
+    return success(isLoading, queryBook, totalItems, books, paginationIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         initial,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loading,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex, String message)?
         error,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         success,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loadingMoreBook,
   }) {
     return success?.call(
-        isLoading, queryBook, kind, totalItems, books, paginationIndex);
+        isLoading, queryBook, totalItems, books, paginationIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         initial,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loading,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex, String message)?
         error,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         success,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loadingMoreBook,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(
-          isLoading, queryBook, kind, totalItems, books, paginationIndex);
+      return success(isLoading, queryBook, totalItems, books, paginationIndex);
     }
     return orElse();
   }
@@ -1700,7 +1672,6 @@ abstract class FindBookState$Success implements FindBookState {
   const factory FindBookState$Success(
       {final bool isLoading,
       required final String queryBook,
-      required final String kind,
       required final String totalItems,
       required final List<Book>? books,
       required final int paginationIndex}) = _$FindBookState$SuccessImpl;
@@ -1709,8 +1680,6 @@ abstract class FindBookState$Success implements FindBookState {
   bool get isLoading;
   @override
   String get queryBook;
-  @override
-  String get kind;
   @override
   String get totalItems;
   @override
@@ -1735,7 +1704,6 @@ abstract class _$$FindBookState$LoadingMoreBookImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       String queryBook,
-      String kind,
       String totalItems,
       List<Book>? books,
       int paginationIndex});
@@ -1756,7 +1724,6 @@ class __$$FindBookState$LoadingMoreBookImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? queryBook = null,
-    Object? kind = null,
     Object? totalItems = null,
     Object? books = freezed,
     Object? paginationIndex = null,
@@ -1769,10 +1736,6 @@ class __$$FindBookState$LoadingMoreBookImplCopyWithImpl<$Res>
       queryBook: null == queryBook
           ? _value.queryBook
           : queryBook // ignore: cast_nullable_to_non_nullable
-              as String,
-      kind: null == kind
-          ? _value.kind
-          : kind // ignore: cast_nullable_to_non_nullable
               as String,
       totalItems: null == totalItems
           ? _value.totalItems
@@ -1797,7 +1760,6 @@ class _$FindBookState$LoadingMoreBookImpl
   const _$FindBookState$LoadingMoreBookImpl(
       {this.isLoading = true,
       required this.queryBook,
-      this.kind = '',
       this.totalItems = '',
       final List<Book>? books = const [],
       required this.paginationIndex})
@@ -1808,9 +1770,6 @@ class _$FindBookState$LoadingMoreBookImpl
   final bool isLoading;
   @override
   final String queryBook;
-  @override
-  @JsonKey()
-  final String kind;
   @override
   @JsonKey()
   final String totalItems;
@@ -1830,7 +1789,7 @@ class _$FindBookState$LoadingMoreBookImpl
 
   @override
   String toString() {
-    return 'FindBookState.loadingMoreBook(isLoading: $isLoading, queryBook: $queryBook, kind: $kind, totalItems: $totalItems, books: $books, paginationIndex: $paginationIndex)';
+    return 'FindBookState.loadingMoreBook(isLoading: $isLoading, queryBook: $queryBook, totalItems: $totalItems, books: $books, paginationIndex: $paginationIndex)';
   }
 
   @override
@@ -1842,7 +1801,6 @@ class _$FindBookState$LoadingMoreBookImpl
                 other.isLoading == isLoading) &&
             (identical(other.queryBook, queryBook) ||
                 other.queryBook == queryBook) &&
-            (identical(other.kind, kind) || other.kind == kind) &&
             (identical(other.totalItems, totalItems) ||
                 other.totalItems == totalItems) &&
             const DeepCollectionEquality().equals(other._books, _books) &&
@@ -1851,8 +1809,8 @@ class _$FindBookState$LoadingMoreBookImpl
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, queryBook, kind,
-      totalItems, const DeepCollectionEquality().hash(_books), paginationIndex);
+  int get hashCode => Object.hash(runtimeType, isLoading, queryBook, totalItems,
+      const DeepCollectionEquality().hash(_books), paginationIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -1865,72 +1823,77 @@ class _$FindBookState$LoadingMoreBookImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         initial,
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         loading,
-    required TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)
+    required TResult Function(
+            bool isLoading,
+            String queryBook,
+            String totalItems,
+            List<Book>? books,
+            int paginationIndex,
+            String message)
         error,
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         success,
-    required TResult Function(bool isLoading, String queryBook, String kind,
+    required TResult Function(bool isLoading, String queryBook,
             String totalItems, List<Book>? books, int paginationIndex)
         loadingMoreBook,
   }) {
     return loadingMoreBook(
-        isLoading, queryBook, kind, totalItems, books, paginationIndex);
+        isLoading, queryBook, totalItems, books, paginationIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         initial,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loading,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex, String message)?
         error,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         success,
-    TResult? Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult? Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loadingMoreBook,
   }) {
     return loadingMoreBook?.call(
-        isLoading, queryBook, kind, totalItems, books, paginationIndex);
+        isLoading, queryBook, totalItems, books, paginationIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         initial,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loading,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex, String message)?
         error,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         success,
-    TResult Function(bool isLoading, String queryBook, String kind,
-            String totalItems, List<Book>? books, int paginationIndex)?
+    TResult Function(bool isLoading, String queryBook, String totalItems,
+            List<Book>? books, int paginationIndex)?
         loadingMoreBook,
     required TResult orElse(),
   }) {
     if (loadingMoreBook != null) {
       return loadingMoreBook(
-          isLoading, queryBook, kind, totalItems, books, paginationIndex);
+          isLoading, queryBook, totalItems, books, paginationIndex);
     }
     return orElse();
   }
@@ -1981,7 +1944,6 @@ abstract class FindBookState$LoadingMoreBook implements FindBookState {
   const factory FindBookState$LoadingMoreBook(
           {final bool isLoading,
           required final String queryBook,
-          final String kind,
           final String totalItems,
           final List<Book>? books,
           required final int paginationIndex}) =
@@ -1991,8 +1953,6 @@ abstract class FindBookState$LoadingMoreBook implements FindBookState {
   bool get isLoading;
   @override
   String get queryBook;
-  @override
-  String get kind;
   @override
   String get totalItems;
   @override

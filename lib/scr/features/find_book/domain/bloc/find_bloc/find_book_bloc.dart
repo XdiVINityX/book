@@ -1,5 +1,6 @@
 import 'package:book/scr/features/find_book/domain/entity/book.dart';
 import 'package:book/scr/features/find_book/domain/repository/find_book_repository.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -29,21 +30,16 @@ class FindBookBloc extends Bloc<FindBookEvent, FindBookState> {
     Emitter<FindBookState> emitter,
   ) async {
     try {
-      const queryBook = 'Ведьмак';
-      emitter(const FindBookState.loading());
-      final BookGeneral booksGeneral =
-          await _findBookRepository.getBooks(queryBook: queryBook,paginationStartIndex: '0');
       emitter(
-        FindBookState.success(
+        const FindBookState.success(
           paginationIndex: 0,
-          queryBook: queryBook,
-          books: booksGeneral.books,
-          kind: booksGeneral.kind,
-          totalItems: booksGeneral.totalItems,
+          queryBook: '',
+          books: null,
+          totalItems: '0',
         ),
       );
     } on Object catch (e, s) {
-      const FindBookState.error();
+     emitter(const FindBookState.error(message: 'Произошла ошибка'));
       rethrow;
     }
   }
@@ -61,12 +57,11 @@ class FindBookBloc extends Bloc<FindBookEvent, FindBookState> {
           paginationIndex: 0,
           queryBook: event.query,
           books: booksGeneral.books,
-          kind: booksGeneral.kind,
           totalItems: booksGeneral.totalItems,
         ),
       );
-    } on Object catch (e, s) {
-      const FindBookState$Error();
+    } on DioException catch (e, s) {
+      emitter(const FindBookState.error(message: 'Произошла ошибка'));
     }
   }
 
@@ -82,7 +77,6 @@ class FindBookBloc extends Bloc<FindBookEvent, FindBookState> {
       FindBookState.loadingMoreBook(
         queryBook: state.queryBook,
         totalItems: state.totalItems,
-        kind: state.kind,
         books: state.books,
         paginationIndex: newPaginationIndex,
       ),
@@ -97,7 +91,6 @@ class FindBookBloc extends Bloc<FindBookEvent, FindBookState> {
       FindBookState.success(
         paginationIndex: newPaginationIndex,
         queryBook: state.queryBook,
-        kind: newBooksGeneral.kind,
         totalItems: newBooksGeneral.totalItems,
         books:[...?state.books, ...?newBooksGeneral.books] ,
       ),

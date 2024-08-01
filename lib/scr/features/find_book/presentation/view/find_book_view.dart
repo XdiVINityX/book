@@ -33,7 +33,7 @@ class _BodyFindBookViewState extends State<_BodyFindBookView> {
   }
 
   void _loadMoreBooks() {
-    final bloc = context.read<FindBookBloc>()
+    context.read<FindBookBloc>()
     .add(const FindBookEvent$LoadMoreBook());
   }
 
@@ -58,7 +58,7 @@ class _BodyFindBookViewState extends State<_BodyFindBookView> {
                       loadMore: _loadMoreBooks,
                     );
                   } else {
-                    return const Text('Ничего не найдено');
+                    return const Center(child: Text('Введите запрос для поиска книг'));
                   }
                 },
               ),
