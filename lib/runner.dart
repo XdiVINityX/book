@@ -76,14 +76,13 @@ Future<void> initializeHttpClient($MutableDependencies dependencies) async {
     ..connectTimeout = timeout
     ..receiveTimeout = timeout
     ..sendTimeout = timeout;
-
   final interceptors = <Interceptor>[
-    InterceptorsWrapper(
+   /* InterceptorsWrapper(
       onRequest: (options, handler) {
         options.headers['Key'] = dotenv.get('API_KEY');
         return handler.next(options);
       },
-    ),
+    ),*/
     //LogInterceptor(responseBody: true),
     PrettyDioLogger(),
   ];
