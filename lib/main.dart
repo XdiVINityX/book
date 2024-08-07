@@ -1,7 +1,7 @@
-import 'package:book/scr/features/app/presentation/view/app_view.dart';
-import 'package:flutter/material.dart';
+import 'package:book/runner.dart';
+import 'package:flutter/foundation.dart';
 
 void main() {
-  runApp(const MyApp());
+  debugPrint("Starting application");
+  run();
 }
-
