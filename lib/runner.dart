@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:book/scr/app_dependencies.dart';
 import 'package:book/scr/core/data/source/network/book_api_provider.dart';
 import 'package:book/scr/core/data/source/network/service/api_service.dart';
@@ -119,4 +120,11 @@ void initializeNavigation($MutableDependencies dependencies) {
       print(e);
     }
   }
+ /* // BD
+  Future<void> initializeDataBase($MutableDependencies dependencies) async {
+    final String path = join(await getDatabasesPath(),'book_database');
+    
+    //final database = openDatabase(path,)
+  }*/
+
 }

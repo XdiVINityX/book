@@ -10,11 +10,13 @@ class BookSliverList extends StatefulWidget {
     required this.books,
     required this.isLoadMore,
     required this.loadMore,
+    required this.navigateToShelf,
   });
 
   final List<Book> books;
   final bool isLoadMore;
   final void Function() loadMore;
+  final void Function() navigateToShelf;
 
   @override
   State<BookSliverList> createState() => _BookSliverListState();
@@ -54,7 +56,7 @@ class _BookSliverListState extends State<BookSliverList> {
                         urlNotFound,
                 authors: widget.books[index].volumeInfo.authors ?? [],
                 description: widget.books[index].volumeInfo.description ?? '',
-              ),
+             navigateToShelf: widget.navigateToShelf, ),
             ),
             separatorBuilder: (context, index) => const SizedBox(
               height: 15,
@@ -71,45 +73,20 @@ class _BookSliverListState extends State<BookSliverList> {
       );
 }
 
-class BooksList extends StatelessWidget {
-  const BooksList({super.key, required this.books, required this.isLoadMore});
-
-  final List<Book> books;
-  final bool isLoadMore;
-
-  final urlNotFound =
-      'https://placehold.co/100x200?text=%D0%9D%D0%B5%20%D0%BD%D0%B0%D0%B9%D0%B4%D0%B5%D0%BD%D0%BE';
-
-  @override
-  Widget build(BuildContext context) => ListView.separated(
-        separatorBuilder: (context, index) => Padding(
-          padding: const EdgeInsets.all(12),
-          child: _BookItem(
-            bookName: books[index].volumeInfo.title,
-            bookImageUrl: books[index].volumeInfo.imageLinks?.smallThumbnail ??
-                urlNotFound,
-            authors: books[index].volumeInfo.authors ?? [],
-            description: books[index].volumeInfo.description ?? '',
-          ),
-        ),
-        itemCount: books.length + 1,
-        itemBuilder: (context, index) => const SizedBox(
-            height: 15, child: ColoredBox(color: Color(0xFFEEF0F1))),
-      );
-}
-
 class _BookItem extends StatelessWidget {
   const _BookItem({
     required this.bookName,
     required this.bookImageUrl,
     required this.description,
     required this.authors,
+    required this.navigateToShelf,
   });
 
   final String bookName;
   final List<String> authors;
   final String description;
   final String bookImageUrl;
+  final void Function() navigateToShelf;
 
   @override
   Widget build(BuildContext context) {
@@ -160,121 +137,14 @@ class _BookItem extends StatelessWidget {
         const SizedBox(
           height: 8,
         ),
-        const Row(
+        Row(
           children: [
-            Text('Добавить на полку'),
-            Spacer(),
-            Text('Читать далее'),
-          ],
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-      ],
-    );
-  }
-}
-
-/*
-import 'package:book/scr/core/color/color_theme.dart';
-import 'package:book/scr/core/text/text_theme.dart';
-import 'package:book/scr/features/find_book/domain/entity/book.dart';
-import 'package:drop_cap_text/drop_cap_text.dart';
-import 'package:flutter/material.dart';
-
-class BooksList extends StatelessWidget {
-  const BooksList({super.key, required this.books, required this.isLoadMore});
-
-  final List<Book> books;
-  final bool isLoadMore;
-
-  final urlNotFound =
-      'https://placehold.co/100x200?text=%D0%9D%D0%B5%20%D0%BD%D0%B0%D0%B9%D0%B4%D0%B5%D0%BD%D0%BE';
-
-  @override
-  Widget build(BuildContext context) => ListView.separated(
-    separatorBuilder: (context, index) => Padding(
-      padding: const EdgeInsets.all(12),
-      child: _BookItem(
-        bookName: books[index].volumeInfo.title,
-        bookImageUrl:
-        books[index].volumeInfo.imageLinks?.smallThumbnail ?? urlNotFound,
-        authors: books[index].volumeInfo.authors ?? [],
-        description: books[index].volumeInfo.description ?? '',
-      ),
-    ),
-    itemCount: books.length + 1,
-    itemBuilder: (context, index) =>
-    const SizedBox(height: 15, child: ColoredBox(color: Color(0xFFEEF0F1))),
-  );
-}
-
-class _BookItem extends StatelessWidget {
-  const _BookItem({
-    required this.bookName,
-    required this.bookImageUrl,
-    required this.description,
-    required this.authors,
-  });
-
-  final String bookName;
-  final List<String> authors;
-  final String description;
-  final String bookImageUrl;
-
-  @override
-  Widget build(BuildContext context) {
-    final textStyles = AppTextTheme.of(context);
-    final colors = AppColorScheme.of(context);
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const SizedBox(
-          height: 8,
-        ),
-        Text(
-          '${authors.join(', ')} - $bookName',
-          style: textStyles.bold14,
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        DropCapText(
-          description,
-          maxLines:8,
-          style: textStyles.medium16,
-          parseInlineMarkdown: true,
-          overflow: TextOverflow.ellipsis,
-          dropCap: DropCap(
-            height: 165,
-            width: 115,
-            child: Padding(
-              padding: const EdgeInsets.only(right: 8,top: 6),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(10),
-                ),
-                child: Image.network(
-                  fit: BoxFit.fill,
-                  bookImageUrl,
-                ),
-              ),
+            FilledButton(
+              onPressed: navigateToShelf,
+              child: const Text('Добавить на полку'),
             ),
-          ),
-        ),
-        const SizedBox(
-          width: 15,
-        ),
-        const SizedBox(
-          width: 15,
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-        const Row(
-          children: [
-            Text('Добавить на полку'),
-            Spacer(),
-            Text('Читать далее'),
+            const Spacer(),
+            const Text('Читать далее'),
           ],
         ),
         const SizedBox(
@@ -284,4 +154,3 @@ class _BookItem extends StatelessWidget {
     );
   }
 }
-*/

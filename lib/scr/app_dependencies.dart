@@ -44,4 +44,5 @@ abstract interface class Dependencies {
   abstract final IApiService apiService;
   abstract final IFindBookRepository findBookRepository;
   abstract final AppRouter appRouter;
+
 }

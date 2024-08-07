@@ -16,7 +16,6 @@ class AppRouter extends GoRouter {
     debugPrint('AppRouter initialized');
   }
 
-
 }
 
 class _RoutingConfig extends ValueListenable<RoutingConfig> {
