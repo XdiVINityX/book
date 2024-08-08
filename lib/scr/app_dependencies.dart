@@ -1,9 +1,9 @@
 import 'package:book/scr/core/data/source/network/service/api_service.dart';
+import 'package:book/scr/core/data/source/storage/service/book_database.dart';
 import 'package:book/scr/features/find_book/domain/repository/find_book_repository.dart';
 import 'package:book/scr/features/navigation/service/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 class $MutableDependencies implements Dependencies {
   @override
   late IApiService apiService;
@@ -13,10 +13,14 @@ class $MutableDependencies implements Dependencies {
   @override
   late AppRouter appRouter;
 
+  @override
+  late BookDatabase database;
+
   Dependencies freeze() => $ImmutableDependencies(
         apiService: apiService,
         findBookRepository: findBookRepository,
         appRouter: appRouter,
+        database: database,
       );
 }
 
@@ -25,6 +29,7 @@ class $ImmutableDependencies implements Dependencies {
     required this.appRouter,
     required this.apiService,
     required this.findBookRepository,
+    required this.database,
   });
 
   @override
@@ -34,6 +39,9 @@ class $ImmutableDependencies implements Dependencies {
 
   @override
   final AppRouter appRouter;
+
+  @override
+  final BookDatabase database;
 }
 
 abstract interface class Dependencies {
@@ -44,5 +52,5 @@ abstract interface class Dependencies {
   abstract final IApiService apiService;
   abstract final IFindBookRepository findBookRepository;
   abstract final AppRouter appRouter;
-
+  abstract final BookDatabase database;
 }
