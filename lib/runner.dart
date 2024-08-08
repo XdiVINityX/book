@@ -16,9 +16,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:path/path.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
 
 Future<void> run() async => _runApp();
 
@@ -112,6 +112,7 @@ void initializeNavigation($MutableDependencies dependencies) {
     final AppRouter appRouter = AppRouter(
       appRoutesDelegate: appRoutes,
       initialLocation: AppRoutePaths.search,
+     // navigatorKey: AppRouter.navigatorKey,
       errorBuilder: (context, state) => ErrorNavigatorView(
         routerState: state,
       ),
@@ -129,12 +130,12 @@ Future<void> initializeDataBase($MutableDependencies dependencies) async {
   final String path = join(await getDatabasesPath(), 'book_database');
   final database = await openDatabase(
     path,
-    version: 5,
+    version: 6,
     onCreate: (db, version) async {
       await createTables(db);
     },
     onUpgrade: (db, oldVersion, newVersion) async{
-      if(oldVersion < 5){
+      if(oldVersion < 6){
         await db.execute('DROP TABLE IF EXISTS books');
         await db.execute('DROP TABLE IF EXISTS shelves');
         await db.execute('DROP TABLE IF EXISTS books_on_shelves');
@@ -186,6 +187,14 @@ Future<void> createTables(Database db) async{
         )
         ''');
 
+  await db.execute('''
+  CREATE TABLE quotes(
+  id INTEGER PRIMARY KEY,
+  book_id INTEGER,
+  quote TEXT,
+  FOREIGN KEY (book_id) REFERENCES books(id)
+  )
+  ''');
   await db.execute('''
         CREATE TABLE books_on_shelves(
         book_id INTEGER,

@@ -1,6 +1,7 @@
 import 'package:book/scr/app_dependencies.dart';
 import 'package:book/scr/core/assets/icons/icons.dart';
 import 'package:book/scr/features/find_book/domain/bloc/find_bloc/find_book_bloc.dart';
+import 'package:book/scr/features/shelves/domain/bloc/shelves_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -27,10 +28,18 @@ class NavigationView extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) => BlocProvider<FindBookBloc>(
+  Widget build(BuildContext context) => MultiBlocProvider(
+        providers: [
+          BlocProvider<FindBookBloc>(
             create: (context) => FindBookBloc(
               findBookRepository: Dependencies.of(context).findBookRepository,
             )..add(const FindBookEvent$Started()),
+          ),
+          BlocProvider(
+            create: (context) =>
+                ShelvesBloc()..add(const ShelvesEvent.started()),
+          ),
+        ],
         child: Scaffold(
           body: navigation,
           bottomNavigationBar: BottomNavigationBar(

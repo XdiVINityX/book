@@ -10,15 +10,16 @@ class FindBookView extends StatelessWidget {
   const FindBookView({super.key});
 
   @override
-  Widget build(BuildContext context) =>
-      BlocBuilder<FindBookBloc, FindBookState>(
-        builder: (context, state) => switch (state) {
-          FindBookState$Loading() =>
-            const Center(child: CircularProgressIndicator()),
-          FindBookState$Error() =>
-            const Center(child: Text('Произошла ошибка')),
-          _ => const _BodyFindBookView(),
-        },
+  Widget build(BuildContext context) => Scaffold(
+        body: BlocBuilder<FindBookBloc, FindBookState>(
+          builder: (context, state) => switch (state) {
+            FindBookState$Loading() =>
+              const Center(child: CircularProgressIndicator()),
+            FindBookState$Error() =>
+              const Center(child: Text('Произошла ошибка')),
+            _ => const _BodyFindBookView(),
+          },
+        ),
       );
 }
 
@@ -33,10 +34,10 @@ class _BodyFindBookViewState extends State<_BodyFindBookView> {
   @override
   void initState() {
     super.initState();
-    // TODO(delete):
+    /*  // TODO(delete):
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _navigateToShelf();
-    });
+    });*/
   }
 
   void _navigateToShelf() {
@@ -50,7 +51,6 @@ class _BodyFindBookViewState extends State<_BodyFindBookView> {
   void _loadMoreBooks() {
     context.read<FindBookBloc>().add(const FindBookEvent$LoadMoreBook());
   }
-
 
   @override
   Widget build(BuildContext context) => SafeArea(
@@ -71,7 +71,8 @@ class _BodyFindBookViewState extends State<_BodyFindBookView> {
                     );
                   } else {
                     return const Center(
-                        child: Text('Введите запрос для поиска книг'),);
+                      child: Text('Введите запрос для поиска книг'),
+                    );
                   }
                 },
               ),

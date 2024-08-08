@@ -1,5 +1,6 @@
 import 'package:book/scr/features/navigation/domain/entity/app_routes.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter extends GoRouter {
@@ -7,6 +8,7 @@ class AppRouter extends GoRouter {
     super.debugLogDiagnostics = true,
     required AppRoutesDelegate appRoutesDelegate,
     String super.initialLocation = '/',
+    //super.navigatorKey,
     super.errorBuilder,
   }) : super.routingConfig(
     routingConfig: _RoutingConfig(
@@ -15,6 +17,8 @@ class AppRouter extends GoRouter {
   ) {
     debugPrint('AppRouter initialized');
   }
+
+  //static final  GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>(debugLabel:'root');
 
 }
 

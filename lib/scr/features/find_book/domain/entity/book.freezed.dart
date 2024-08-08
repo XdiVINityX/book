@@ -179,6 +179,10 @@ abstract class _BookGeneral implements BookGeneral {
       throw _privateConstructorUsedError;
 }
 
+Book _$BookFromJson(Map<String, dynamic> json) {
+  return _Book.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Book {
   String get kind => throw _privateConstructorUsedError;
@@ -189,7 +193,12 @@ mixin _$Book {
   SaleInfo get saleInfo => throw _privateConstructorUsedError;
   AccessInfo get accessInfo => throw _privateConstructorUsedError;
   SearchInfo? get searchInfo => throw _privateConstructorUsedError;
+  String? get userComment => throw _privateConstructorUsedError;
+  int? get userRating => throw _privateConstructorUsedError;
+  String? get bookFormat => throw _privateConstructorUsedError;
+  String? get narrator => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $BookCopyWith<Book> get copyWith => throw _privateConstructorUsedError;
 }
@@ -207,7 +216,11 @@ abstract class $BookCopyWith<$Res> {
       VolumeInfo volumeInfo,
       SaleInfo saleInfo,
       AccessInfo accessInfo,
-      SearchInfo? searchInfo});
+      SearchInfo? searchInfo,
+      String? userComment,
+      int? userRating,
+      String? bookFormat,
+      String? narrator});
 
   $VolumeInfoCopyWith<$Res> get volumeInfo;
   $SaleInfoCopyWith<$Res> get saleInfo;
@@ -236,6 +249,10 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
     Object? saleInfo = null,
     Object? accessInfo = null,
     Object? searchInfo = freezed,
+    Object? userComment = freezed,
+    Object? userRating = freezed,
+    Object? bookFormat = freezed,
+    Object? narrator = freezed,
   }) {
     return _then(_value.copyWith(
       kind: null == kind
@@ -270,6 +287,22 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
           ? _value.searchInfo
           : searchInfo // ignore: cast_nullable_to_non_nullable
               as SearchInfo?,
+      userComment: freezed == userComment
+          ? _value.userComment
+          : userComment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userRating: freezed == userRating
+          ? _value.userRating
+          : userRating // ignore: cast_nullable_to_non_nullable
+              as int?,
+      bookFormat: freezed == bookFormat
+          ? _value.bookFormat
+          : bookFormat // ignore: cast_nullable_to_non_nullable
+              as String?,
+      narrator: freezed == narrator
+          ? _value.narrator
+          : narrator // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -325,7 +358,11 @@ abstract class _$$BookImplCopyWith<$Res> implements $BookCopyWith<$Res> {
       VolumeInfo volumeInfo,
       SaleInfo saleInfo,
       AccessInfo accessInfo,
-      SearchInfo? searchInfo});
+      SearchInfo? searchInfo,
+      String? userComment,
+      int? userRating,
+      String? bookFormat,
+      String? narrator});
 
   @override
   $VolumeInfoCopyWith<$Res> get volumeInfo;
@@ -355,6 +392,10 @@ class __$$BookImplCopyWithImpl<$Res>
     Object? saleInfo = null,
     Object? accessInfo = null,
     Object? searchInfo = freezed,
+    Object? userComment = freezed,
+    Object? userRating = freezed,
+    Object? bookFormat = freezed,
+    Object? narrator = freezed,
   }) {
     return _then(_$BookImpl(
       kind: null == kind
@@ -389,12 +430,28 @@ class __$$BookImplCopyWithImpl<$Res>
           ? _value.searchInfo
           : searchInfo // ignore: cast_nullable_to_non_nullable
               as SearchInfo?,
+      userComment: freezed == userComment
+          ? _value.userComment
+          : userComment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userRating: freezed == userRating
+          ? _value.userRating
+          : userRating // ignore: cast_nullable_to_non_nullable
+              as int?,
+      bookFormat: freezed == bookFormat
+          ? _value.bookFormat
+          : bookFormat // ignore: cast_nullable_to_non_nullable
+              as String?,
+      narrator: freezed == narrator
+          ? _value.narrator
+          : narrator // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$BookImpl implements _Book {
   const _$BookImpl(
       {required this.kind,
@@ -404,7 +461,14 @@ class _$BookImpl implements _Book {
       required this.volumeInfo,
       required this.saleInfo,
       required this.accessInfo,
-      required this.searchInfo});
+      required this.searchInfo,
+      this.userComment,
+      this.userRating,
+      this.bookFormat,
+      this.narrator});
+
+  factory _$BookImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BookImplFromJson(json);
 
   @override
   final String kind;
@@ -422,10 +486,18 @@ class _$BookImpl implements _Book {
   final AccessInfo accessInfo;
   @override
   final SearchInfo? searchInfo;
+  @override
+  final String? userComment;
+  @override
+  final int? userRating;
+  @override
+  final String? bookFormat;
+  @override
+  final String? narrator;
 
   @override
   String toString() {
-    return 'Book(kind: $kind, id: $id, etag: $etag, selfLink: $selfLink, volumeInfo: $volumeInfo, saleInfo: $saleInfo, accessInfo: $accessInfo, searchInfo: $searchInfo)';
+    return 'Book(kind: $kind, id: $id, etag: $etag, selfLink: $selfLink, volumeInfo: $volumeInfo, saleInfo: $saleInfo, accessInfo: $accessInfo, searchInfo: $searchInfo, userComment: $userComment, userRating: $userRating, bookFormat: $bookFormat, narrator: $narrator)';
   }
 
   @override
@@ -445,18 +517,46 @@ class _$BookImpl implements _Book {
             (identical(other.accessInfo, accessInfo) ||
                 other.accessInfo == accessInfo) &&
             (identical(other.searchInfo, searchInfo) ||
-                other.searchInfo == searchInfo));
+                other.searchInfo == searchInfo) &&
+            (identical(other.userComment, userComment) ||
+                other.userComment == userComment) &&
+            (identical(other.userRating, userRating) ||
+                other.userRating == userRating) &&
+            (identical(other.bookFormat, bookFormat) ||
+                other.bookFormat == bookFormat) &&
+            (identical(other.narrator, narrator) ||
+                other.narrator == narrator));
   }
 
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, kind, id, etag, selfLink,
-      volumeInfo, saleInfo, accessInfo, searchInfo);
+  int get hashCode => Object.hash(
+      runtimeType,
+      kind,
+      id,
+      etag,
+      selfLink,
+      volumeInfo,
+      saleInfo,
+      accessInfo,
+      searchInfo,
+      userComment,
+      userRating,
+      bookFormat,
+      narrator);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$BookImplCopyWith<_$BookImpl> get copyWith =>
       __$$BookImplCopyWithImpl<_$BookImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$BookImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Book implements Book {
@@ -468,7 +568,13 @@ abstract class _Book implements Book {
       required final VolumeInfo volumeInfo,
       required final SaleInfo saleInfo,
       required final AccessInfo accessInfo,
-      required final SearchInfo? searchInfo}) = _$BookImpl;
+      required final SearchInfo? searchInfo,
+      final String? userComment,
+      final int? userRating,
+      final String? bookFormat,
+      final String? narrator}) = _$BookImpl;
+
+  factory _Book.fromJson(Map<String, dynamic> json) = _$BookImpl.fromJson;
 
   @override
   String get kind;
@@ -487,9 +593,21 @@ abstract class _Book implements Book {
   @override
   SearchInfo? get searchInfo;
   @override
+  String? get userComment;
+  @override
+  int? get userRating;
+  @override
+  String? get bookFormat;
+  @override
+  String? get narrator;
+  @override
   @JsonKey(ignore: true)
   _$$BookImplCopyWith<_$BookImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+AccessInfo _$AccessInfoFromJson(Map<String, dynamic> json) {
+  return _AccessInfo.fromJson(json);
 }
 
 /// @nodoc
@@ -505,6 +623,7 @@ mixin _$AccessInfo {
   String get accessViewStatus => throw _privateConstructorUsedError;
   bool get quoteSharingAllowed => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AccessInfoCopyWith<AccessInfo> get copyWith =>
       throw _privateConstructorUsedError;
@@ -711,7 +830,7 @@ class __$$AccessInfoImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AccessInfoImpl implements _AccessInfo {
   const _$AccessInfoImpl(
       {required this.country,
@@ -724,6 +843,9 @@ class _$AccessInfoImpl implements _AccessInfo {
       required this.webReaderLink,
       required this.accessViewStatus,
       required this.quoteSharingAllowed});
+
+  factory _$AccessInfoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AccessInfoImplFromJson(json);
 
   @override
   final String country;
@@ -775,6 +897,7 @@ class _$AccessInfoImpl implements _AccessInfo {
                 other.quoteSharingAllowed == quoteSharingAllowed));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -794,6 +917,13 @@ class _$AccessInfoImpl implements _AccessInfo {
   @pragma('vm:prefer-inline')
   _$$AccessInfoImplCopyWith<_$AccessInfoImpl> get copyWith =>
       __$$AccessInfoImplCopyWithImpl<_$AccessInfoImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AccessInfoImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _AccessInfo implements AccessInfo {
@@ -808,6 +938,9 @@ abstract class _AccessInfo implements AccessInfo {
       required final String? webReaderLink,
       required final String accessViewStatus,
       required final bool quoteSharingAllowed}) = _$AccessInfoImpl;
+
+  factory _AccessInfo.fromJson(Map<String, dynamic> json) =
+      _$AccessInfoImpl.fromJson;
 
   @override
   String get country;
@@ -835,11 +968,16 @@ abstract class _AccessInfo implements AccessInfo {
       throw _privateConstructorUsedError;
 }
 
+Epub _$EpubFromJson(Map<String, dynamic> json) {
+  return _Epub.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Epub {
   bool get isAvailable => throw _privateConstructorUsedError;
   String? get acsTokenLink => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $EpubCopyWith<Epub> get copyWith => throw _privateConstructorUsedError;
 }
@@ -918,9 +1056,12 @@ class __$$EpubImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$EpubImpl implements _Epub {
   const _$EpubImpl({required this.isAvailable, this.acsTokenLink});
+
+  factory _$EpubImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EpubImplFromJson(json);
 
   @override
   final bool isAvailable;
@@ -943,6 +1084,7 @@ class _$EpubImpl implements _Epub {
                 other.acsTokenLink == acsTokenLink));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, isAvailable, acsTokenLink);
 
@@ -951,12 +1093,21 @@ class _$EpubImpl implements _Epub {
   @pragma('vm:prefer-inline')
   _$$EpubImplCopyWith<_$EpubImpl> get copyWith =>
       __$$EpubImplCopyWithImpl<_$EpubImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EpubImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Epub implements Epub {
   const factory _Epub(
       {required final bool isAvailable,
       final String? acsTokenLink}) = _$EpubImpl;
+
+  factory _Epub.fromJson(Map<String, dynamic> json) = _$EpubImpl.fromJson;
 
   @override
   bool get isAvailable;
@@ -968,11 +1119,16 @@ abstract class _Epub implements Epub {
       throw _privateConstructorUsedError;
 }
 
+Pdf _$PdfFromJson(Map<String, dynamic> json) {
+  return _Pdf.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Pdf {
   bool get isAvailable => throw _privateConstructorUsedError;
   String? get acsTokenLink => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PdfCopyWith<Pdf> get copyWith => throw _privateConstructorUsedError;
 }
@@ -1048,9 +1204,12 @@ class __$$PdfImplCopyWithImpl<$Res> extends _$PdfCopyWithImpl<$Res, _$PdfImpl>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$PdfImpl implements _Pdf {
   const _$PdfImpl({required this.isAvailable, required this.acsTokenLink});
+
+  factory _$PdfImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PdfImplFromJson(json);
 
   @override
   final bool isAvailable;
@@ -1073,6 +1232,7 @@ class _$PdfImpl implements _Pdf {
                 other.acsTokenLink == acsTokenLink));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, isAvailable, acsTokenLink);
 
@@ -1081,12 +1241,21 @@ class _$PdfImpl implements _Pdf {
   @pragma('vm:prefer-inline')
   _$$PdfImplCopyWith<_$PdfImpl> get copyWith =>
       __$$PdfImplCopyWithImpl<_$PdfImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PdfImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Pdf implements Pdf {
   const factory _Pdf(
       {required final bool isAvailable,
       required final String? acsTokenLink}) = _$PdfImpl;
+
+  factory _Pdf.fromJson(Map<String, dynamic> json) = _$PdfImpl.fromJson;
 
   @override
   bool get isAvailable;
@@ -1096,6 +1265,10 @@ abstract class _Pdf implements Pdf {
   @JsonKey(ignore: true)
   _$$PdfImplCopyWith<_$PdfImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+SaleInfo _$SaleInfoFromJson(Map<String, dynamic> json) {
+  return _SaleInfo.fromJson(json);
 }
 
 /// @nodoc
@@ -1108,6 +1281,7 @@ mixin _$SaleInfo {
   String? get buyLink => throw _privateConstructorUsedError;
   List<Offer>? get offers => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SaleInfoCopyWith<SaleInfo> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1285,7 +1459,7 @@ class __$$SaleInfoImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SaleInfoImpl implements _SaleInfo {
   const _$SaleInfoImpl(
       {required this.country,
@@ -1296,6 +1470,9 @@ class _$SaleInfoImpl implements _SaleInfo {
       this.buyLink,
       final List<Offer>? offers})
       : _offers = offers;
+
+  factory _$SaleInfoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SaleInfoImplFromJson(json);
 
   @override
   final String country;
@@ -1341,6 +1518,7 @@ class _$SaleInfoImpl implements _SaleInfo {
             const DeepCollectionEquality().equals(other._offers, _offers));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1357,6 +1535,13 @@ class _$SaleInfoImpl implements _SaleInfo {
   @pragma('vm:prefer-inline')
   _$$SaleInfoImplCopyWith<_$SaleInfoImpl> get copyWith =>
       __$$SaleInfoImplCopyWithImpl<_$SaleInfoImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SaleInfoImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _SaleInfo implements SaleInfo {
@@ -1368,6 +1553,9 @@ abstract class _SaleInfo implements SaleInfo {
       final SaleInfoListPrice? retailPrice,
       final String? buyLink,
       final List<Offer>? offers}) = _$SaleInfoImpl;
+
+  factory _SaleInfo.fromJson(Map<String, dynamic> json) =
+      _$SaleInfoImpl.fromJson;
 
   @override
   String get country;
@@ -1389,11 +1577,16 @@ abstract class _SaleInfo implements SaleInfo {
       throw _privateConstructorUsedError;
 }
 
+SaleInfoListPrice _$SaleInfoListPriceFromJson(Map<String, dynamic> json) {
+  return _SaleInfoListPrice.fromJson(json);
+}
+
 /// @nodoc
 mixin _$SaleInfoListPrice {
   double get amount => throw _privateConstructorUsedError;
   String get currencyCode => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SaleInfoListPriceCopyWith<SaleInfoListPrice> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1476,10 +1669,13 @@ class __$$SaleInfoListPriceImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SaleInfoListPriceImpl implements _SaleInfoListPrice {
   const _$SaleInfoListPriceImpl(
       {required this.amount, required this.currencyCode});
+
+  factory _$SaleInfoListPriceImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SaleInfoListPriceImplFromJson(json);
 
   @override
   final double amount;
@@ -1501,6 +1697,7 @@ class _$SaleInfoListPriceImpl implements _SaleInfoListPrice {
                 other.currencyCode == currencyCode));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, amount, currencyCode);
 
@@ -1510,12 +1707,22 @@ class _$SaleInfoListPriceImpl implements _SaleInfoListPrice {
   _$$SaleInfoListPriceImplCopyWith<_$SaleInfoListPriceImpl> get copyWith =>
       __$$SaleInfoListPriceImplCopyWithImpl<_$SaleInfoListPriceImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SaleInfoListPriceImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _SaleInfoListPrice implements SaleInfoListPrice {
   const factory _SaleInfoListPrice(
       {required final double amount,
       required final String currencyCode}) = _$SaleInfoListPriceImpl;
+
+  factory _SaleInfoListPrice.fromJson(Map<String, dynamic> json) =
+      _$SaleInfoListPriceImpl.fromJson;
 
   @override
   double get amount;
@@ -1527,6 +1734,10 @@ abstract class _SaleInfoListPrice implements SaleInfoListPrice {
       throw _privateConstructorUsedError;
 }
 
+Offer _$OfferFromJson(Map<String, dynamic> json) {
+  return _Offer.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Offer {
   int get finskyOfferType => throw _privateConstructorUsedError;
@@ -1534,6 +1745,7 @@ mixin _$Offer {
   OfferListPrice get retailPrice => throw _privateConstructorUsedError;
   bool? get giftable => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $OfferCopyWith<Offer> get copyWith => throw _privateConstructorUsedError;
 }
@@ -1665,13 +1877,16 @@ class __$$OfferImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$OfferImpl implements _Offer {
   const _$OfferImpl(
       {required this.finskyOfferType,
       required this.listPrice,
       required this.retailPrice,
       required this.giftable});
+
+  factory _$OfferImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OfferImplFromJson(json);
 
   @override
   final int finskyOfferType;
@@ -1702,6 +1917,7 @@ class _$OfferImpl implements _Offer {
                 other.giftable == giftable));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, finskyOfferType, listPrice, retailPrice, giftable);
@@ -1711,6 +1927,13 @@ class _$OfferImpl implements _Offer {
   @pragma('vm:prefer-inline')
   _$$OfferImplCopyWith<_$OfferImpl> get copyWith =>
       __$$OfferImplCopyWithImpl<_$OfferImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OfferImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Offer implements Offer {
@@ -1719,6 +1942,8 @@ abstract class _Offer implements Offer {
       required final OfferListPrice listPrice,
       required final OfferListPrice retailPrice,
       required final bool? giftable}) = _$OfferImpl;
+
+  factory _Offer.fromJson(Map<String, dynamic> json) = _$OfferImpl.fromJson;
 
   @override
   int get finskyOfferType;
@@ -1734,11 +1959,16 @@ abstract class _Offer implements Offer {
       throw _privateConstructorUsedError;
 }
 
+OfferListPrice _$OfferListPriceFromJson(Map<String, dynamic> json) {
+  return _OfferListPrice.fromJson(json);
+}
+
 /// @nodoc
 mixin _$OfferListPrice {
   int get amountInMicros => throw _privateConstructorUsedError;
   String get currencyCode => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $OfferListPriceCopyWith<OfferListPrice> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1821,10 +2051,13 @@ class __$$OfferListPriceImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$OfferListPriceImpl implements _OfferListPrice {
   const _$OfferListPriceImpl(
       {required this.amountInMicros, required this.currencyCode});
+
+  factory _$OfferListPriceImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OfferListPriceImplFromJson(json);
 
   @override
   final int amountInMicros;
@@ -1847,6 +2080,7 @@ class _$OfferListPriceImpl implements _OfferListPrice {
                 other.currencyCode == currencyCode));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, amountInMicros, currencyCode);
 
@@ -1856,12 +2090,22 @@ class _$OfferListPriceImpl implements _OfferListPrice {
   _$$OfferListPriceImplCopyWith<_$OfferListPriceImpl> get copyWith =>
       __$$OfferListPriceImplCopyWithImpl<_$OfferListPriceImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OfferListPriceImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _OfferListPrice implements OfferListPrice {
   const factory _OfferListPrice(
       {required final int amountInMicros,
       required final String currencyCode}) = _$OfferListPriceImpl;
+
+  factory _OfferListPrice.fromJson(Map<String, dynamic> json) =
+      _$OfferListPriceImpl.fromJson;
 
   @override
   int get amountInMicros;
@@ -1873,10 +2117,15 @@ abstract class _OfferListPrice implements OfferListPrice {
       throw _privateConstructorUsedError;
 }
 
+SearchInfo _$SearchInfoFromJson(Map<String, dynamic> json) {
+  return _SearchInfo.fromJson(json);
+}
+
 /// @nodoc
 mixin _$SearchInfo {
   String? get textSnippet => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SearchInfoCopyWith<SearchInfo> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1949,9 +2198,12 @@ class __$$SearchInfoImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SearchInfoImpl implements _SearchInfo {
   const _$SearchInfoImpl({required this.textSnippet});
+
+  factory _$SearchInfoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SearchInfoImplFromJson(json);
 
   @override
   final String? textSnippet;
@@ -1970,6 +2222,7 @@ class _$SearchInfoImpl implements _SearchInfo {
                 other.textSnippet == textSnippet));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, textSnippet);
 
@@ -1978,11 +2231,21 @@ class _$SearchInfoImpl implements _SearchInfo {
   @pragma('vm:prefer-inline')
   _$$SearchInfoImplCopyWith<_$SearchInfoImpl> get copyWith =>
       __$$SearchInfoImplCopyWithImpl<_$SearchInfoImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SearchInfoImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _SearchInfo implements SearchInfo {
   const factory _SearchInfo({required final String? textSnippet}) =
       _$SearchInfoImpl;
+
+  factory _SearchInfo.fromJson(Map<String, dynamic> json) =
+      _$SearchInfoImpl.fromJson;
 
   @override
   String? get textSnippet;
@@ -1990,6 +2253,10 @@ abstract class _SearchInfo implements SearchInfo {
   @JsonKey(ignore: true)
   _$$SearchInfoImplCopyWith<_$SearchInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+VolumeInfo _$VolumeInfoFromJson(Map<String, dynamic> json) {
+  return _VolumeInfo.fromJson(json);
 }
 
 /// @nodoc
@@ -2016,6 +2283,7 @@ mixin _$VolumeInfo {
   String get infoLink => throw _privateConstructorUsedError;
   String get canonicalVolumeLink => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $VolumeInfoCopyWith<VolumeInfo> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2350,7 +2618,7 @@ class __$$VolumeInfoImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$VolumeInfoImpl implements _VolumeInfo {
   const _$VolumeInfoImpl(
       {required this.title,
@@ -2375,6 +2643,9 @@ class _$VolumeInfoImpl implements _VolumeInfo {
       : _authors = authors,
         _industryIdentifiers = industryIdentifiers,
         _categories = categories;
+
+  factory _$VolumeInfoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$VolumeInfoImplFromJson(json);
 
   @override
   final String title;
@@ -2488,6 +2759,7 @@ class _$VolumeInfoImpl implements _VolumeInfo {
                 other.canonicalVolumeLink == canonicalVolumeLink));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -2517,6 +2789,13 @@ class _$VolumeInfoImpl implements _VolumeInfo {
   @pragma('vm:prefer-inline')
   _$$VolumeInfoImplCopyWith<_$VolumeInfoImpl> get copyWith =>
       __$$VolumeInfoImplCopyWithImpl<_$VolumeInfoImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$VolumeInfoImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _VolumeInfo implements VolumeInfo {
@@ -2540,6 +2819,9 @@ abstract class _VolumeInfo implements VolumeInfo {
       required final String previewLink,
       required final String infoLink,
       required final String canonicalVolumeLink}) = _$VolumeInfoImpl;
+
+  factory _VolumeInfo.fromJson(Map<String, dynamic> json) =
+      _$VolumeInfoImpl.fromJson;
 
   @override
   String get title;
@@ -2585,11 +2867,16 @@ abstract class _VolumeInfo implements VolumeInfo {
       throw _privateConstructorUsedError;
 }
 
+ImageLinks _$ImageLinksFromJson(Map<String, dynamic> json) {
+  return _ImageLinks.fromJson(json);
+}
+
 /// @nodoc
 mixin _$ImageLinks {
   String get smallThumbnail => throw _privateConstructorUsedError;
   String get thumbnail => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ImageLinksCopyWith<ImageLinks> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2672,10 +2959,13 @@ class __$$ImageLinksImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$ImageLinksImpl implements _ImageLinks {
   const _$ImageLinksImpl(
       {required this.smallThumbnail, required this.thumbnail});
+
+  factory _$ImageLinksImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ImageLinksImplFromJson(json);
 
   @override
   final String smallThumbnail;
@@ -2698,6 +2988,7 @@ class _$ImageLinksImpl implements _ImageLinks {
                 other.thumbnail == thumbnail));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, smallThumbnail, thumbnail);
 
@@ -2706,12 +2997,22 @@ class _$ImageLinksImpl implements _ImageLinks {
   @pragma('vm:prefer-inline')
   _$$ImageLinksImplCopyWith<_$ImageLinksImpl> get copyWith =>
       __$$ImageLinksImplCopyWithImpl<_$ImageLinksImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ImageLinksImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _ImageLinks implements ImageLinks {
   const factory _ImageLinks(
       {required final String smallThumbnail,
       required final String thumbnail}) = _$ImageLinksImpl;
+
+  factory _ImageLinks.fromJson(Map<String, dynamic> json) =
+      _$ImageLinksImpl.fromJson;
 
   @override
   String get smallThumbnail;
@@ -2723,11 +3024,16 @@ abstract class _ImageLinks implements ImageLinks {
       throw _privateConstructorUsedError;
 }
 
+IndustryIdentifier _$IndustryIdentifierFromJson(Map<String, dynamic> json) {
+  return _IndustryIdentifier.fromJson(json);
+}
+
 /// @nodoc
 mixin _$IndustryIdentifier {
   String get type => throw _privateConstructorUsedError;
   String get identifier => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $IndustryIdentifierCopyWith<IndustryIdentifier> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2810,10 +3116,13 @@ class __$$IndustryIdentifierImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$IndustryIdentifierImpl implements _IndustryIdentifier {
   const _$IndustryIdentifierImpl(
       {required this.type, required this.identifier});
+
+  factory _$IndustryIdentifierImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IndustryIdentifierImplFromJson(json);
 
   @override
   final String type;
@@ -2835,6 +3144,7 @@ class _$IndustryIdentifierImpl implements _IndustryIdentifier {
                 other.identifier == identifier));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, type, identifier);
 
@@ -2844,12 +3154,22 @@ class _$IndustryIdentifierImpl implements _IndustryIdentifier {
   _$$IndustryIdentifierImplCopyWith<_$IndustryIdentifierImpl> get copyWith =>
       __$$IndustryIdentifierImplCopyWithImpl<_$IndustryIdentifierImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$IndustryIdentifierImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _IndustryIdentifier implements IndustryIdentifier {
   const factory _IndustryIdentifier(
       {required final String type,
       required final String identifier}) = _$IndustryIdentifierImpl;
+
+  factory _IndustryIdentifier.fromJson(Map<String, dynamic> json) =
+      _$IndustryIdentifierImpl.fromJson;
 
   @override
   String get type;
@@ -2861,11 +3181,16 @@ abstract class _IndustryIdentifier implements IndustryIdentifier {
       throw _privateConstructorUsedError;
 }
 
+PanelizationSummary _$PanelizationSummaryFromJson(Map<String, dynamic> json) {
+  return _PanelizationSummary.fromJson(json);
+}
+
 /// @nodoc
 mixin _$PanelizationSummary {
   bool get containsEpubBubbles => throw _privateConstructorUsedError;
   bool get containsImageBubbles => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PanelizationSummaryCopyWith<PanelizationSummary> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2948,10 +3273,13 @@ class __$$PanelizationSummaryImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$PanelizationSummaryImpl implements _PanelizationSummary {
   const _$PanelizationSummaryImpl(
       {required this.containsEpubBubbles, required this.containsImageBubbles});
+
+  factory _$PanelizationSummaryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PanelizationSummaryImplFromJson(json);
 
   @override
   final bool containsEpubBubbles;
@@ -2974,6 +3302,7 @@ class _$PanelizationSummaryImpl implements _PanelizationSummary {
                 other.containsImageBubbles == containsImageBubbles));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, containsEpubBubbles, containsImageBubbles);
@@ -2984,12 +3313,22 @@ class _$PanelizationSummaryImpl implements _PanelizationSummary {
   _$$PanelizationSummaryImplCopyWith<_$PanelizationSummaryImpl> get copyWith =>
       __$$PanelizationSummaryImplCopyWithImpl<_$PanelizationSummaryImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PanelizationSummaryImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _PanelizationSummary implements PanelizationSummary {
   const factory _PanelizationSummary(
       {required final bool containsEpubBubbles,
       required final bool containsImageBubbles}) = _$PanelizationSummaryImpl;
+
+  factory _PanelizationSummary.fromJson(Map<String, dynamic> json) =
+      _$PanelizationSummaryImpl.fromJson;
 
   @override
   bool get containsEpubBubbles;
@@ -3001,11 +3340,16 @@ abstract class _PanelizationSummary implements PanelizationSummary {
       throw _privateConstructorUsedError;
 }
 
+ReadingModes _$ReadingModesFromJson(Map<String, dynamic> json) {
+  return _ReadingModes.fromJson(json);
+}
+
 /// @nodoc
 mixin _$ReadingModes {
   bool get text => throw _privateConstructorUsedError;
   bool get image => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ReadingModesCopyWith<ReadingModes> get copyWith =>
       throw _privateConstructorUsedError;
@@ -3088,9 +3432,12 @@ class __$$ReadingModesImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$ReadingModesImpl implements _ReadingModes {
   const _$ReadingModesImpl({required this.text, required this.image});
+
+  factory _$ReadingModesImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ReadingModesImplFromJson(json);
 
   @override
   final bool text;
@@ -3111,6 +3458,7 @@ class _$ReadingModesImpl implements _ReadingModes {
             (identical(other.image, image) || other.image == image));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, text, image);
 
@@ -3119,12 +3467,22 @@ class _$ReadingModesImpl implements _ReadingModes {
   @pragma('vm:prefer-inline')
   _$$ReadingModesImplCopyWith<_$ReadingModesImpl> get copyWith =>
       __$$ReadingModesImplCopyWithImpl<_$ReadingModesImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ReadingModesImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _ReadingModes implements ReadingModes {
   const factory _ReadingModes(
       {required final bool text,
       required final bool image}) = _$ReadingModesImpl;
+
+  factory _ReadingModes.fromJson(Map<String, dynamic> json) =
+      _$ReadingModesImpl.fromJson;
 
   @override
   bool get text;

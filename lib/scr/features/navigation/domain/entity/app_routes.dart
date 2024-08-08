@@ -14,8 +14,6 @@ class AppRoutes implements AppRoutesDelegate {
   final List<RouteBase> appRoutes;
 }
 
-
-
 abstract interface class AppRoutesDelegate{
    List<RouteBase>  get appRoutes;
 }

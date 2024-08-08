@@ -1,7 +1,9 @@
 import 'package:book/scr/features/find_book/data/dto/book_dto.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+
 part 'book.freezed.dart';
+part 'book.g.dart';
 
 @freezed
 class BookGeneral with _$BookGeneral {
@@ -18,7 +20,7 @@ class BookGeneral with _$BookGeneral {
       );
 }
 
-@freezed
+@Freezed(toJson: true, fromJson: true)
 class Book with _$Book {
   const factory Book({
     required String kind,
@@ -29,6 +31,10 @@ class Book with _$Book {
     required SaleInfo saleInfo,
     required AccessInfo accessInfo,
     required SearchInfo? searchInfo,
+    String? userComment,
+    int? userRating,
+    String? bookFormat,
+    String? narrator,
   }) = _Book;
 
   factory Book.fromDto(BookDto dto) => Book(
@@ -42,9 +48,11 @@ class Book with _$Book {
         searchInfo:
             dto.searchInfo != null ? SearchInfo.fromDto(dto.searchInfo!) : null,
       );
+
+  factory Book.fromJson(Map<String,dynamic> json) => _$BookFromJson(json);
 }
 
-@freezed
+@Freezed(fromJson: true, toJson: true)
 class AccessInfo with _$AccessInfo {
   const factory AccessInfo({
     required String country,
@@ -71,9 +79,11 @@ class AccessInfo with _$AccessInfo {
         accessViewStatus: dto.accessViewStatus,
         quoteSharingAllowed: dto.quoteSharingAllowed,
       );
+
+  factory AccessInfo.fromJson(Map<String,dynamic> json) => _$AccessInfoFromJson(json);
 }
 
-@freezed
+@Freezed(toJson: true, fromJson: true)
 class Epub with _$Epub {
   const factory Epub({
     required bool isAvailable,
@@ -84,9 +94,11 @@ class Epub with _$Epub {
         isAvailable: dto.isAvailable,
         acsTokenLink: dto.acsTokenLink,
       );
+
+  factory Epub.fromJson(Map<String,dynamic> json) => _$EpubFromJson(json);
 }
 
-@freezed
+@Freezed(toJson: true,fromJson: true)
 class Pdf with _$Pdf {
   const factory Pdf({
     required bool isAvailable,
@@ -97,9 +109,11 @@ class Pdf with _$Pdf {
         isAvailable: dto.isAvailable,
         acsTokenLink: dto.acsTokenLink,
       );
+
+  factory Pdf.fromJson(Map<String, dynamic> json) => _$PdfFromJson(json);
 }
 
-@freezed
+@Freezed(fromJson: true, toJson: true)
 class SaleInfo with _$SaleInfo {
   const factory SaleInfo({
     required String country,
@@ -124,9 +138,11 @@ class SaleInfo with _$SaleInfo {
         buyLink: dto.buyLink,
         offers: dto.offers?.map(Offer.fromDto).toList(),
       );
+
+  factory SaleInfo.fromJson(Map<String, dynamic> json) => _$SaleInfoFromJson(json);
 }
 
-@freezed
+@Freezed(fromJson: true, toJson: true)
 class SaleInfoListPrice with _$SaleInfoListPrice {
   const factory SaleInfoListPrice({
     required double amount,
@@ -138,9 +154,11 @@ class SaleInfoListPrice with _$SaleInfoListPrice {
         amount: dto.amount,
         currencyCode: dto.currencyCode,
       );
+
+  factory SaleInfoListPrice.fromJson(Map<String, dynamic> json) => _$SaleInfoListPriceFromJson(json);
 }
 
-@freezed
+@Freezed(fromJson: true, toJson: true)
 class Offer with _$Offer {
   const factory Offer({
     required int finskyOfferType,
@@ -155,9 +173,10 @@ class Offer with _$Offer {
         retailPrice: OfferListPrice.fromDto(dto.retailPrice),
         giftable: dto.giftable,
       );
+  factory Offer.fromJson(Map<String,dynamic> json) => _$OfferFromJson(json);
 }
 
-@freezed
+@Freezed(fromJson: true, toJson: true)
 class OfferListPrice with _$OfferListPrice {
   const factory OfferListPrice({
     required int amountInMicros,
@@ -168,9 +187,11 @@ class OfferListPrice with _$OfferListPrice {
         amountInMicros: dto.amountInMicros,
         currencyCode: dto.currencyCode,
       );
+
+  factory OfferListPrice.fromJson(Map<String,dynamic> json) => _$OfferListPriceFromJson(json);
 }
 
-@freezed
+@Freezed(toJson: true,fromJson: true)
 class SearchInfo with _$SearchInfo {
   const factory SearchInfo({
     required String? textSnippet,
@@ -179,9 +200,11 @@ class SearchInfo with _$SearchInfo {
   factory SearchInfo.fromDto(SearchInfoDto dto) => SearchInfo(
         textSnippet: dto.textSnippet,
       );
+
+  factory SearchInfo.fromJson(Map<String,dynamic> json) => _$SearchInfoFromJson(json);
 }
 
-@freezed
+@Freezed(toJson: true, fromJson: true)
 class VolumeInfo with _$VolumeInfo {
   const factory VolumeInfo({
     required String title,
@@ -229,9 +252,11 @@ class VolumeInfo with _$VolumeInfo {
         infoLink: dto.infoLink,
         canonicalVolumeLink: dto.canonicalVolumeLink,
       );
+
+  factory VolumeInfo.fromJson(Map<String, dynamic> json) => _$VolumeInfoFromJson(json);
 }
 
-@freezed
+@Freezed(toJson: true,fromJson: true)
 class ImageLinks with _$ImageLinks {
   const factory ImageLinks({
     required String smallThumbnail,
@@ -242,9 +267,11 @@ class ImageLinks with _$ImageLinks {
         smallThumbnail: dto.smallThumbnail,
         thumbnail: dto.thumbnail,
       );
+
+  factory ImageLinks.fromJson(Map<String, dynamic> json) => _$ImageLinksFromJson(json);
 }
 
-@freezed
+@Freezed(toJson: true,fromJson: true)
 class IndustryIdentifier with _$IndustryIdentifier {
   const factory IndustryIdentifier({
     required String type,
@@ -256,9 +283,10 @@ class IndustryIdentifier with _$IndustryIdentifier {
         type: dto.type,
         identifier: dto.identifier,
       );
+  factory IndustryIdentifier.fromJson(Map<String, dynamic> json) => _$IndustryIdentifierFromJson(json);
 }
 
-@freezed
+@Freezed(toJson: true,fromJson: true)
 class PanelizationSummary with _$PanelizationSummary {
   const factory PanelizationSummary({
     required bool containsEpubBubbles,
@@ -270,9 +298,10 @@ class PanelizationSummary with _$PanelizationSummary {
         containsEpubBubbles: dto.containsEpubBubbles,
         containsImageBubbles: dto.containsImageBubbles,
       );
+  factory PanelizationSummary.fromJson(Map<String, dynamic> json) => _$PanelizationSummaryFromJson(json);
 }
 
-@freezed
+@Freezed(toJson: true,fromJson: true)
 class ReadingModes with _$ReadingModes {
   const factory ReadingModes({
     required bool text,
@@ -283,4 +312,5 @@ class ReadingModes with _$ReadingModes {
         text: dto.text,
         image: dto.image,
       );
+  factory ReadingModes.fromJson(Map<String, dynamic> json) => _$ReadingModesFromJson(json);
 }
