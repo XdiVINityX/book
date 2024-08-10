@@ -36,8 +36,9 @@ class NavigationView extends StatelessWidget {
             )..add(const FindBookEvent$Started()),
           ),
           BlocProvider(
-            create: (context) =>
-                ShelvesBloc()..add(const ShelvesEvent.started()),
+            create: (context) => ShelvesBloc(
+                shelvesRepository: Dependencies.of(context).shelvesRepository)
+              ..add(const ShelvesEvent.started()),
           ),
         ],
         child: Scaffold(

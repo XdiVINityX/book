@@ -1,6 +1,7 @@
 part of 'shelves_bloc.dart';
 
 @freezed
-class ShelvesEvent with _$ShelvesEvent {
-  const factory ShelvesEvent.started() = _ShelvesEvent$Started;
+sealed class ShelvesEvent with _$ShelvesEvent {
+  const factory ShelvesEvent.started() = ShelvesEvent$Started;
+  const factory ShelvesEvent.addShel(Shelf shelf) = ShelvesEvent$AddShel;
 }

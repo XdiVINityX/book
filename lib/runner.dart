@@ -11,6 +11,7 @@ import 'package:book/scr/features/navigation/domain/app_route_paths.dart';
 import 'package:book/scr/features/navigation/domain/entity/app_routes.dart';
 import 'package:book/scr/features/navigation/presentation/error_view.dart';
 import 'package:book/scr/features/navigation/service/app_router.dart';
+import 'package:book/scr/features/shelves/data/repository/shelves_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -33,9 +34,11 @@ Future<void> _runApp() async {
         // child: MyApp(dependencies: dependencies),
       ),
     ),
-    onError: (error, stackTrace) => ErrorView(
-      error: error,
-      stackTrace: stackTrace,
+    onError: (error, stackTrace) => runApp(
+      ErrorView(
+        error: error,
+        stackTrace: stackTrace,
+      ),
     ),
   );
 }
@@ -56,18 +59,22 @@ Future<void> initializeApp({
 }
 
 Future<Dependencies> initializeDependencies() async {
-  debugPrint('Инициализация зависимостей');
-  final dependencies = $MutableDependencies();
-  debugPrint('Инициализация initializeHttpClient');
-  await initializeHttpClient(dependencies);
-  debugPrint('Инициализация initializeRepository');
-  initializeRepository(dependencies);
-  debugPrint('Инициализация initializeNavigation');
-  initializeNavigation(dependencies);
-  await initializeDataBase(dependencies);
-  debugPrint('заморозка зависимостей');
-  dependencies.freeze();
-  return dependencies;
+  try {
+    debugPrint('Инициализация зависимостей');
+    final dependencies = $MutableDependencies();
+    debugPrint('Инициализация initializeHttpClient');
+    await initializeHttpClient(dependencies);
+    await initializeDataBase(dependencies);
+    debugPrint('Инициализация initializeRepository');
+    initializeRepository(dependencies);
+    debugPrint('Инициализация initializeNavigation');
+    initializeNavigation(dependencies);
+    debugPrint('заморозка зависимостей');
+    dependencies.freeze();
+    return dependencies;
+  } on Object catch (e) {
+    rethrow;
+  }
 }
 
 //http
@@ -97,35 +104,6 @@ Future<void> initializeHttpClient($MutableDependencies dependencies) async {
   dependencies.apiService = apiService;
 }
 
-// repository
-void initializeRepository($MutableDependencies dependencies) {
-  final bookApiProvider = BookApiProvider(apiService: dependencies.apiService);
-  final findBookRepository =
-      FindBookRepository(findBookApiProvider: bookApiProvider);
-  dependencies.findBookRepository = findBookRepository;
-}
-
-// navigation
-void initializeNavigation($MutableDependencies dependencies) {
-  try {
-    final AppRoutes appRoutes = AppRoutes();
-    final AppRouter appRouter = AppRouter(
-      appRoutesDelegate: appRoutes,
-      initialLocation: AppRoutePaths.search,
-     // navigatorKey: AppRouter.navigatorKey,
-      errorBuilder: (context, state) => ErrorNavigatorView(
-        routerState: state,
-      ),
-    );
-    dependencies.appRouter = appRouter;
-    debugPrint('Navigation initialization completed');
-  } on Object catch (e) {
-    if (kDebugMode) {
-      print(e);
-    }
-  }
-}
-
 Future<void> initializeDataBase($MutableDependencies dependencies) async {
   final String path = join(await getDatabasesPath(), 'book_database');
   final database = await openDatabase(
@@ -134,8 +112,8 @@ Future<void> initializeDataBase($MutableDependencies dependencies) async {
     onCreate: (db, version) async {
       await createTables(db);
     },
-    onUpgrade: (db, oldVersion, newVersion) async{
-      if(oldVersion < 6){
+    onUpgrade: (db, oldVersion, newVersion) async {
+      if (oldVersion < 6) {
         await db.execute('DROP TABLE IF EXISTS books');
         await db.execute('DROP TABLE IF EXISTS shelves');
         await db.execute('DROP TABLE IF EXISTS books_on_shelves');
@@ -144,11 +122,10 @@ Future<void> initializeDataBase($MutableDependencies dependencies) async {
     },
   );
 
-  dependencies.database = BookDatabase(database: database);
+  dependencies.databaseService = DatabaseService(database: database);
 }
 
-
-Future<void> createTables(Database db) async{
+Future<void> createTables(Database db) async {
   await db.execute('''
         CREATE TABLE books(
     id INTEGER PRIMARY KEY,
@@ -204,4 +181,46 @@ Future<void> createTables(Database db) async{
         FOREIGN KEY (shelf_id) REFERENCES shelves(id)
         )
         ''');
+}
+
+// repository
+void initializeRepository($MutableDependencies dependencies) {
+  try {
+    final bookApiProvider =
+        BookApiProvider(apiService: dependencies.apiService);
+    final findBookRepository =
+        FindBookRepository(findBookApiProvider: bookApiProvider);
+
+    // TODO(add): add abstraction Provider
+    final shelvesRepository =
+        ShelvesRepository(databaseProvider: dependencies.databaseService);
+    dependencies
+      ..findBookRepository = findBookRepository
+      ..shelvesRepository = shelvesRepository;
+  } on Object catch (e, s) {
+    debugPrint(e.toString());
+    debugPrint(s.toString());
+    rethrow;
+  }
+}
+
+// navigation
+void initializeNavigation($MutableDependencies dependencies) {
+  try {
+    final AppRoutes appRoutes = AppRoutes();
+    final AppRouter appRouter = AppRouter(
+      appRoutesDelegate: appRoutes,
+      initialLocation: AppRoutePaths.search,
+      // navigatorKey: AppRouter.navigatorKey,
+      errorBuilder: (context, state) => ErrorNavigatorView(
+        routerState: state,
+      ),
+    );
+    dependencies.appRouter = appRouter;
+    debugPrint('Navigation initialization completed');
+  } on Object catch (e) {
+    if (kDebugMode) {
+      print(e);
+    }
+  }
 }

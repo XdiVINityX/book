@@ -1,7 +1,11 @@
 part of 'shelves_bloc.dart';
 
 @freezed
-class ShelvesState with _$ShelvesState {
-  const factory ShelvesState.initial() = _ShelvesState$Initial;
-  const factory ShelvesState.success() = _ShelvesState$Success;
+sealed class ShelvesState with _$ShelvesState {
+
+  const factory ShelvesState.initial({@Default([]) List<Shelf> shelves}) =
+      ShelvesState$Initial;
+
+  const factory ShelvesState.success({required List<Shelf> shelves}) =
+      ShelvesState$Success;
 }

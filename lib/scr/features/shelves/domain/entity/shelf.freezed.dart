@@ -14,12 +14,17 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+Shelf _$ShelfFromJson(Map<String, dynamic> json) {
+  return _Shelf.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Shelf {
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   List<Book> get books => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ShelfCopyWith<Shelf> get copyWith => throw _privateConstructorUsedError;
 }
@@ -29,7 +34,7 @@ abstract class $ShelfCopyWith<$Res> {
   factory $ShelfCopyWith(Shelf value, $Res Function(Shelf) then) =
       _$ShelfCopyWithImpl<$Res, Shelf>;
   @useResult
-  $Res call({int id, String name, List<Book> books});
+  $Res call({int? id, String name, List<Book> books});
 }
 
 /// @nodoc
@@ -45,15 +50,15 @@ class _$ShelfCopyWithImpl<$Res, $Val extends Shelf>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? books = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -73,7 +78,7 @@ abstract class _$$ShelfImplCopyWith<$Res> implements $ShelfCopyWith<$Res> {
       __$$ShelfImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, List<Book> books});
+  $Res call({int? id, String name, List<Book> books});
 }
 
 /// @nodoc
@@ -87,15 +92,15 @@ class __$$ShelfImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? books = null,
   }) {
     return _then(_$ShelfImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -109,14 +114,17 @@ class __$$ShelfImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$ShelfImpl implements _Shelf {
   const _$ShelfImpl(
-      {required this.id, required this.name, final List<Book> books = const []})
+      {this.id, required this.name, final List<Book> books = const []})
       : _books = books;
 
+  factory _$ShelfImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ShelfImplFromJson(json);
+
   @override
-  final int id;
+  final int? id;
   @override
   final String name;
   final List<Book> _books;
@@ -143,6 +151,7 @@ class _$ShelfImpl implements _Shelf {
             const DeepCollectionEquality().equals(other._books, _books));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, name, const DeepCollectionEquality().hash(_books));
@@ -152,16 +161,25 @@ class _$ShelfImpl implements _Shelf {
   @pragma('vm:prefer-inline')
   _$$ShelfImplCopyWith<_$ShelfImpl> get copyWith =>
       __$$ShelfImplCopyWithImpl<_$ShelfImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ShelfImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Shelf implements Shelf {
   const factory _Shelf(
-      {required final int id,
+      {final int? id,
       required final String name,
       final List<Book> books}) = _$ShelfImpl;
 
+  factory _Shelf.fromJson(Map<String, dynamic> json) = _$ShelfImpl.fromJson;
+
   @override
-  int get id;
+  int? get id;
   @override
   String get name;
   @override
