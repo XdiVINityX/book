@@ -1,4 +1,5 @@
 import 'package:book/scr/features/find_book/domain/bloc/find_bloc/find_book_bloc.dart';
+import 'package:book/scr/features/find_book/domain/entity/book.dart';
 import 'package:book/scr/features/find_book/presentation/widget/book_list.dart';
 import 'package:book/scr/features/find_book/presentation/widget/custom_text_field.dart';
 import 'package:book/scr/features/navigation/domain/app_route_names.dart';
@@ -8,6 +9,8 @@ import 'package:go_router/go_router.dart';
 
 class FindBookView extends StatelessWidget {
   const FindBookView({super.key});
+
+
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -40,8 +43,8 @@ class _BodyFindBookViewState extends State<_BodyFindBookView> {
     });*/
   }
 
-  void _navigateToShelf() {
-    GoRouter.of(context).goNamed(AppRouteNames.addOnShelf);
+  void _navigateToShelf(Book book) {
+    GoRouter.of(context).goNamed(AppRouteNames.addOnShelf,extra:book );
   }
 
   void _searchBook(String query) {

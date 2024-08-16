@@ -1,12 +1,14 @@
 import 'package:book/scr/app_dependencies.dart';
 import 'package:book/scr/core/assets/icons/icons.dart';
 import 'package:book/scr/features/find_book/domain/bloc/find_bloc/find_book_bloc.dart';
+import 'package:book/scr/features/find_book/domain/bloc/to_shelf_bloc/add_on_shelf_bloc.dart';
 import 'package:book/scr/features/shelves/domain/bloc/shelves_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
+/*
 final navigationItems = [
   const MapEntry('Поиск', Icons.search),
   const MapEntry(
@@ -15,6 +17,7 @@ final navigationItems = [
   ),
   const MapEntry('Настройки', Icons.settings),
 ];
+*/
 
 class NavigationView extends StatelessWidget {
   const NavigationView({super.key, required this.navigation});
@@ -37,8 +40,8 @@ class NavigationView extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => ShelvesBloc(
-                shelvesRepository: Dependencies.of(context).shelvesRepository)
-              ..add(const ShelvesEvent.started()),
+              shelvesRepository: Dependencies.of(context).shelvesRepository,
+            )..add(const ShelvesEvent.started()),
           ),
         ],
         child: Scaffold(

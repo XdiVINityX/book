@@ -16,7 +16,7 @@ class BookSliverList extends StatefulWidget {
   final List<Book> books;
   final bool isLoadMore;
   final void Function() loadMore;
-  final void Function() navigateToShelf;
+  final void Function(Book) navigateToShelf;
 
   @override
   State<BookSliverList> createState() => _BookSliverListState();
@@ -56,7 +56,11 @@ class _BookSliverListState extends State<BookSliverList> {
                         urlNotFound,
                 authors: widget.books[index].volumeInfo.authors ?? [],
                 description: widget.books[index].volumeInfo.description ?? '',
-             navigateToShelf: widget.navigateToShelf, ),
+                navigateToShelf:  () {
+                  widget.navigateToShelf(widget.books[index]);
+                },
+
+              ),
             ),
             separatorBuilder: (context, index) => const SizedBox(
               height: 15,

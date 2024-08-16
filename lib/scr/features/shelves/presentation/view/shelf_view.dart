@@ -85,26 +85,28 @@ class AddShelf extends StatelessWidget {
   final VoidCallback onTap;
 
   @override
-  Widget build(BuildContext context) => GestureDetector(
-        onTap: onTap,
-        child: const Row(
-          children: [
-            SizedBox(
-              width: 80,
-              height: 80,
-              child: ColoredBox(
-                color: Colors.grey,
-                child: Icon(Icons.add),
-              ),
+  Widget build(BuildContext context) => Material(
+    child: InkWell(
+      onTap: onTap,
+      child: const Row(
+        children: [
+          SizedBox(
+            width: 80,
+            height: 80,
+            child: ColoredBox(
+              color: Colors.grey,
+              child: Icon(Icons.add),
             ),
-            SizedBox(
-              width: 15,
-            ),
-            Text(
-              'Добавить полку',
-              style: TextStyle(fontSize: 20),
-            ),
-          ],
-        ),
-      );
+          ),
+          SizedBox(
+            width: 15,
+          ),
+          Text(
+            'Добавить полку',
+            style: TextStyle(fontSize: 20),
+          ),
+        ],
+      ),
+    ),
+  );
 }

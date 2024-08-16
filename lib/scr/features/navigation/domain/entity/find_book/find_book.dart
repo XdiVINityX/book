@@ -1,3 +1,4 @@
+import 'package:book/scr/features/find_book/domain/entity/book.dart';
 import 'package:book/scr/features/find_book/presentation/view/add_on_shelf_view.dart';
 import 'package:book/scr/features/find_book/presentation/view/find_book_view.dart';
 import 'package:book/scr/features/navigation/domain/app_route_names.dart';
@@ -13,7 +14,7 @@ final List<RouteBase> findBookRoutes = [
       GoRoute(
         name: AppRouteNames.addOnShelf,
         path: AppRoutePaths.addOnShelf,
-        builder: (context, state) => const AddOnShelfView(),
+        builder: (context, state) => AddOnShelfView(book: state.extra! as Book,),
       ),
     ],
   ),

@@ -21,6 +21,7 @@ mixin _$FindBookEvent {
     required TResult Function() started,
     required TResult Function(String query) searchBookOnSubmit,
     required TResult Function() loadMoreBook,
+    required TResult Function(Book book) addOnShelf,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$FindBookEvent {
     TResult? Function()? started,
     TResult? Function(String query)? searchBookOnSubmit,
     TResult? Function()? loadMoreBook,
+    TResult? Function(Book book)? addOnShelf,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$FindBookEvent {
     TResult Function()? started,
     TResult Function(String query)? searchBookOnSubmit,
     TResult Function()? loadMoreBook,
+    TResult Function(Book book)? addOnShelf,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +47,7 @@ mixin _$FindBookEvent {
     required TResult Function(FindBookEvent$SearchBook value)
         searchBookOnSubmit,
     required TResult Function(FindBookEvent$LoadMoreBook value) loadMoreBook,
+    required TResult Function(FindBookEvent$AddOnShelf value) addOnShelf,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +55,7 @@ mixin _$FindBookEvent {
     TResult? Function(FindBookEvent$Started value)? started,
     TResult? Function(FindBookEvent$SearchBook value)? searchBookOnSubmit,
     TResult? Function(FindBookEvent$LoadMoreBook value)? loadMoreBook,
+    TResult? Function(FindBookEvent$AddOnShelf value)? addOnShelf,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +63,7 @@ mixin _$FindBookEvent {
     TResult Function(FindBookEvent$Started value)? started,
     TResult Function(FindBookEvent$SearchBook value)? searchBookOnSubmit,
     TResult Function(FindBookEvent$LoadMoreBook value)? loadMoreBook,
+    TResult Function(FindBookEvent$AddOnShelf value)? addOnShelf,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -124,6 +130,7 @@ class _$FindBookEvent$StartedImpl implements FindBookEvent$Started {
     required TResult Function() started,
     required TResult Function(String query) searchBookOnSubmit,
     required TResult Function() loadMoreBook,
+    required TResult Function(Book book) addOnShelf,
   }) {
     return started();
   }
@@ -134,6 +141,7 @@ class _$FindBookEvent$StartedImpl implements FindBookEvent$Started {
     TResult? Function()? started,
     TResult? Function(String query)? searchBookOnSubmit,
     TResult? Function()? loadMoreBook,
+    TResult? Function(Book book)? addOnShelf,
   }) {
     return started?.call();
   }
@@ -144,6 +152,7 @@ class _$FindBookEvent$StartedImpl implements FindBookEvent$Started {
     TResult Function()? started,
     TResult Function(String query)? searchBookOnSubmit,
     TResult Function()? loadMoreBook,
+    TResult Function(Book book)? addOnShelf,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -159,6 +168,7 @@ class _$FindBookEvent$StartedImpl implements FindBookEvent$Started {
     required TResult Function(FindBookEvent$SearchBook value)
         searchBookOnSubmit,
     required TResult Function(FindBookEvent$LoadMoreBook value) loadMoreBook,
+    required TResult Function(FindBookEvent$AddOnShelf value) addOnShelf,
   }) {
     return started(this);
   }
@@ -169,6 +179,7 @@ class _$FindBookEvent$StartedImpl implements FindBookEvent$Started {
     TResult? Function(FindBookEvent$Started value)? started,
     TResult? Function(FindBookEvent$SearchBook value)? searchBookOnSubmit,
     TResult? Function(FindBookEvent$LoadMoreBook value)? loadMoreBook,
+    TResult? Function(FindBookEvent$AddOnShelf value)? addOnShelf,
   }) {
     return started?.call(this);
   }
@@ -179,6 +190,7 @@ class _$FindBookEvent$StartedImpl implements FindBookEvent$Started {
     TResult Function(FindBookEvent$Started value)? started,
     TResult Function(FindBookEvent$SearchBook value)? searchBookOnSubmit,
     TResult Function(FindBookEvent$LoadMoreBook value)? loadMoreBook,
+    TResult Function(FindBookEvent$AddOnShelf value)? addOnShelf,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -262,6 +274,7 @@ class _$FindBookEvent$SearchBookImpl implements FindBookEvent$SearchBook {
     required TResult Function() started,
     required TResult Function(String query) searchBookOnSubmit,
     required TResult Function() loadMoreBook,
+    required TResult Function(Book book) addOnShelf,
   }) {
     return searchBookOnSubmit(query);
   }
@@ -272,6 +285,7 @@ class _$FindBookEvent$SearchBookImpl implements FindBookEvent$SearchBook {
     TResult? Function()? started,
     TResult? Function(String query)? searchBookOnSubmit,
     TResult? Function()? loadMoreBook,
+    TResult? Function(Book book)? addOnShelf,
   }) {
     return searchBookOnSubmit?.call(query);
   }
@@ -282,6 +296,7 @@ class _$FindBookEvent$SearchBookImpl implements FindBookEvent$SearchBook {
     TResult Function()? started,
     TResult Function(String query)? searchBookOnSubmit,
     TResult Function()? loadMoreBook,
+    TResult Function(Book book)? addOnShelf,
     required TResult orElse(),
   }) {
     if (searchBookOnSubmit != null) {
@@ -297,6 +312,7 @@ class _$FindBookEvent$SearchBookImpl implements FindBookEvent$SearchBook {
     required TResult Function(FindBookEvent$SearchBook value)
         searchBookOnSubmit,
     required TResult Function(FindBookEvent$LoadMoreBook value) loadMoreBook,
+    required TResult Function(FindBookEvent$AddOnShelf value) addOnShelf,
   }) {
     return searchBookOnSubmit(this);
   }
@@ -307,6 +323,7 @@ class _$FindBookEvent$SearchBookImpl implements FindBookEvent$SearchBook {
     TResult? Function(FindBookEvent$Started value)? started,
     TResult? Function(FindBookEvent$SearchBook value)? searchBookOnSubmit,
     TResult? Function(FindBookEvent$LoadMoreBook value)? loadMoreBook,
+    TResult? Function(FindBookEvent$AddOnShelf value)? addOnShelf,
   }) {
     return searchBookOnSubmit?.call(this);
   }
@@ -317,6 +334,7 @@ class _$FindBookEvent$SearchBookImpl implements FindBookEvent$SearchBook {
     TResult Function(FindBookEvent$Started value)? started,
     TResult Function(FindBookEvent$SearchBook value)? searchBookOnSubmit,
     TResult Function(FindBookEvent$LoadMoreBook value)? loadMoreBook,
+    TResult Function(FindBookEvent$AddOnShelf value)? addOnShelf,
     required TResult orElse(),
   }) {
     if (searchBookOnSubmit != null) {
@@ -380,6 +398,7 @@ class _$FindBookEvent$LoadMoreBookImpl implements FindBookEvent$LoadMoreBook {
     required TResult Function() started,
     required TResult Function(String query) searchBookOnSubmit,
     required TResult Function() loadMoreBook,
+    required TResult Function(Book book) addOnShelf,
   }) {
     return loadMoreBook();
   }
@@ -390,6 +409,7 @@ class _$FindBookEvent$LoadMoreBookImpl implements FindBookEvent$LoadMoreBook {
     TResult? Function()? started,
     TResult? Function(String query)? searchBookOnSubmit,
     TResult? Function()? loadMoreBook,
+    TResult? Function(Book book)? addOnShelf,
   }) {
     return loadMoreBook?.call();
   }
@@ -400,6 +420,7 @@ class _$FindBookEvent$LoadMoreBookImpl implements FindBookEvent$LoadMoreBook {
     TResult Function()? started,
     TResult Function(String query)? searchBookOnSubmit,
     TResult Function()? loadMoreBook,
+    TResult Function(Book book)? addOnShelf,
     required TResult orElse(),
   }) {
     if (loadMoreBook != null) {
@@ -415,6 +436,7 @@ class _$FindBookEvent$LoadMoreBookImpl implements FindBookEvent$LoadMoreBook {
     required TResult Function(FindBookEvent$SearchBook value)
         searchBookOnSubmit,
     required TResult Function(FindBookEvent$LoadMoreBook value) loadMoreBook,
+    required TResult Function(FindBookEvent$AddOnShelf value) addOnShelf,
   }) {
     return loadMoreBook(this);
   }
@@ -425,6 +447,7 @@ class _$FindBookEvent$LoadMoreBookImpl implements FindBookEvent$LoadMoreBook {
     TResult? Function(FindBookEvent$Started value)? started,
     TResult? Function(FindBookEvent$SearchBook value)? searchBookOnSubmit,
     TResult? Function(FindBookEvent$LoadMoreBook value)? loadMoreBook,
+    TResult? Function(FindBookEvent$AddOnShelf value)? addOnShelf,
   }) {
     return loadMoreBook?.call(this);
   }
@@ -435,6 +458,7 @@ class _$FindBookEvent$LoadMoreBookImpl implements FindBookEvent$LoadMoreBook {
     TResult Function(FindBookEvent$Started value)? started,
     TResult Function(FindBookEvent$SearchBook value)? searchBookOnSubmit,
     TResult Function(FindBookEvent$LoadMoreBook value)? loadMoreBook,
+    TResult Function(FindBookEvent$AddOnShelf value)? addOnShelf,
     required TResult orElse(),
   }) {
     if (loadMoreBook != null) {
@@ -446,6 +470,166 @@ class _$FindBookEvent$LoadMoreBookImpl implements FindBookEvent$LoadMoreBook {
 
 abstract class FindBookEvent$LoadMoreBook implements FindBookEvent {
   const factory FindBookEvent$LoadMoreBook() = _$FindBookEvent$LoadMoreBookImpl;
+}
+
+/// @nodoc
+abstract class _$$FindBookEvent$AddOnShelfImplCopyWith<$Res> {
+  factory _$$FindBookEvent$AddOnShelfImplCopyWith(
+          _$FindBookEvent$AddOnShelfImpl value,
+          $Res Function(_$FindBookEvent$AddOnShelfImpl) then) =
+      __$$FindBookEvent$AddOnShelfImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Book book});
+
+  $BookCopyWith<$Res> get book;
+}
+
+/// @nodoc
+class __$$FindBookEvent$AddOnShelfImplCopyWithImpl<$Res>
+    extends _$FindBookEventCopyWithImpl<$Res, _$FindBookEvent$AddOnShelfImpl>
+    implements _$$FindBookEvent$AddOnShelfImplCopyWith<$Res> {
+  __$$FindBookEvent$AddOnShelfImplCopyWithImpl(
+      _$FindBookEvent$AddOnShelfImpl _value,
+      $Res Function(_$FindBookEvent$AddOnShelfImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? book = null,
+  }) {
+    return _then(_$FindBookEvent$AddOnShelfImpl(
+      null == book
+          ? _value.book
+          : book // ignore: cast_nullable_to_non_nullable
+              as Book,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BookCopyWith<$Res> get book {
+    return $BookCopyWith<$Res>(_value.book, (value) {
+      return _then(_value.copyWith(book: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$FindBookEvent$AddOnShelfImpl implements FindBookEvent$AddOnShelf {
+  const _$FindBookEvent$AddOnShelfImpl(this.book);
+
+  @override
+  final Book book;
+
+  @override
+  String toString() {
+    return 'FindBookEvent.addOnShelf(book: $book)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FindBookEvent$AddOnShelfImpl &&
+            (identical(other.book, book) || other.book == book));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, book);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FindBookEvent$AddOnShelfImplCopyWith<_$FindBookEvent$AddOnShelfImpl>
+      get copyWith => __$$FindBookEvent$AddOnShelfImplCopyWithImpl<
+          _$FindBookEvent$AddOnShelfImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String query) searchBookOnSubmit,
+    required TResult Function() loadMoreBook,
+    required TResult Function(Book book) addOnShelf,
+  }) {
+    return addOnShelf(book);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String query)? searchBookOnSubmit,
+    TResult? Function()? loadMoreBook,
+    TResult? Function(Book book)? addOnShelf,
+  }) {
+    return addOnShelf?.call(book);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String query)? searchBookOnSubmit,
+    TResult Function()? loadMoreBook,
+    TResult Function(Book book)? addOnShelf,
+    required TResult orElse(),
+  }) {
+    if (addOnShelf != null) {
+      return addOnShelf(book);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FindBookEvent$Started value) started,
+    required TResult Function(FindBookEvent$SearchBook value)
+        searchBookOnSubmit,
+    required TResult Function(FindBookEvent$LoadMoreBook value) loadMoreBook,
+    required TResult Function(FindBookEvent$AddOnShelf value) addOnShelf,
+  }) {
+    return addOnShelf(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FindBookEvent$Started value)? started,
+    TResult? Function(FindBookEvent$SearchBook value)? searchBookOnSubmit,
+    TResult? Function(FindBookEvent$LoadMoreBook value)? loadMoreBook,
+    TResult? Function(FindBookEvent$AddOnShelf value)? addOnShelf,
+  }) {
+    return addOnShelf?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FindBookEvent$Started value)? started,
+    TResult Function(FindBookEvent$SearchBook value)? searchBookOnSubmit,
+    TResult Function(FindBookEvent$LoadMoreBook value)? loadMoreBook,
+    TResult Function(FindBookEvent$AddOnShelf value)? addOnShelf,
+    required TResult orElse(),
+  }) {
+    if (addOnShelf != null) {
+      return addOnShelf(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FindBookEvent$AddOnShelf implements FindBookEvent {
+  const factory FindBookEvent$AddOnShelf(final Book book) =
+      _$FindBookEvent$AddOnShelfImpl;
+
+  Book get book;
+  @JsonKey(ignore: true)
+  _$$FindBookEvent$AddOnShelfImplCopyWith<_$FindBookEvent$AddOnShelfImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

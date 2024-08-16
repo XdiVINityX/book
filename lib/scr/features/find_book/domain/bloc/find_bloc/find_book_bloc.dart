@@ -19,6 +19,8 @@ class FindBookBloc extends Bloc<FindBookEvent, FindBookState> {
         final FindBookEvent$Started event => _initialization(event, emit),
         final FindBookEvent$SearchBook event => _searchBook(event, emit),
         final FindBookEvent$LoadMoreBook event => _loadMoreBooks(event, emit),
+
+        final FindBookEvent$AddOnShelf  event => _addOnShelf(event, emit),
       },
     );
   }
@@ -95,5 +97,9 @@ class FindBookBloc extends Bloc<FindBookEvent, FindBookState> {
         books:[...?state.books, ...?newBooksGeneral.books] ,
       ),
     );
+  }
+
+  void _addOnShelf(FindBookEvent$AddOnShelf event, Emitter<FindBookState> emit){
+
   }
 }
